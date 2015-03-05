@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Best-feeds-forever
+Plugin Name: Best Feeds Forever
 Version: 0.1-alpha
-Description: PLUGIN DESCRIPTION HERE
-Author: YOUR NAME HERE
+Description: Feed 💗
+Author: stevenkword
 Author URI: YOUR SITE HERE
 Plugin URI: PLUGIN SITE HERE
 Text Domain: best-feeds-forever
@@ -42,7 +42,7 @@ class Best_Feeds_Forever {
 		// Decouple RSS2
 		remove_all_actions( 'do_feed_rss2' );
 
-		//add_action( 'do_feed_rss2', array( self::instance(), 'bff_rss2' ), 10, 1 );
+		add_action( 'do_feed_rss2', array( self::instance(), 'bff_rss2' ), 10, 1 );
 
 	}
 
@@ -51,7 +51,6 @@ class Best_Feeds_Forever {
 		$rss2_template = plugin_dir_path( __FILE__ ) . 'templates/feed-rss2.php';
 
 		if( file_exists( $rss2_template ) ) {
-			//die( 'death to smoochy' );
 			load_template( $rss2_template );
 		} else {
 			do_feed_rss2( $for_comments ); // Call default function
