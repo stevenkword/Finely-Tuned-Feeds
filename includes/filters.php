@@ -3,8 +3,8 @@
 // Exit if this file is directly accessed
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-// Debug catch all that outputs "debug duck" on all esc_xml fields.
-//add_filter( 'esc_xml', 'debug_duck' );
+// Debug catch all that outputs "DEBUG" on all esc_xml fields.
+//add_filter( 'esc_xml', function() { return 'DEBUG'; } );
 
 /**
  * Replace Default RSS Filters using esc_html with esc_xml

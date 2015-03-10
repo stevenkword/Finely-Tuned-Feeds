@@ -83,12 +83,3 @@ function patch_31190( $text ) {
 
 	return $safe_text;
 }
-
-/**
- * Debug Duck
- * @param  [type] $text [description]
- * @return [type]       [description]
- */
-function debug_duck( $text ) {
-	return "Debug Duck";
-}
