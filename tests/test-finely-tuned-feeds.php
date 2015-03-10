@@ -41,9 +41,7 @@ class Tests_Finely_Tuned_Feeds extends WP_UnitTestCase {
 	 * Test potential encoding and formatting problems.
 	 * @return [type] [description]
 	 */
-	/*
 	function test_htmlentities() {
-
 		// Title test for #9993, 9992
 		$actual = esc_xml( '& > test <' );
 		$expected = '&amp; &gt; test &lt;';
@@ -57,6 +55,4 @@ class Tests_Finely_Tuned_Feeds extends WP_UnitTestCase {
 		$expected = 'Use &lt;h1&gt; to &lt;h6&gt; for headings, &lt;p&gt; for paragraphy, but not formatting';
 		$this->assertEquals( $expected, $actual );
 	}
-	*/
-
 }
