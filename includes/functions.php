@@ -47,7 +47,7 @@ function esc_xml( $text ) {
 	/**
 	 * Filter a string cleaned and escaped for output in HTML.
 	 *
-	 * Text passed to esc_html() is stripped of invalid or special characters
+	 * Text passed to esc_xml() is stripped of invalid or special characters
 	 * before output.
 	 *
 	 * @since 4.2.0
