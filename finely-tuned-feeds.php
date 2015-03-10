@@ -40,9 +40,12 @@ class Finely_Tuned_Feeds {
 	public static function init() {
 
 		// Filters
-		require( plugin_dir_path( __FILE__ ) . 'includes/filters.php' );
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/filters.php' );
 
-		// Decouple RSS2
+		// Functions
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/functions.php' );
+
+		// Templates
 		remove_all_actions( 'do_feed_rss2' );
 
 		add_action( 'do_feed_rss2', array( self::instance(), 'ftf_rss2' ), 10, 1 );
