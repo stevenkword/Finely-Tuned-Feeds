@@ -45,7 +45,7 @@ function esc_xml( $text ) {
 	$safe_text = _wp_specialchars( $safe_text, ENT_QUOTES );
 
 	/**
-	 * Filter a string cleaned and escaped for output in HTML.
+	 * Filter a string cleaned and escaped for output in XML.
 	 *
 	 * Text passed to esc_xml() is stripped of invalid or special characters
 	 * before output.
