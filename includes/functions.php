@@ -31,16 +31,6 @@ function esc_xml( $text ) {
 	}
 
 	/**
-	 * 28816 - Wow! This fixes most things
-	 *
-	 * https://core.trac.wordpress.org/attachment/ticket/28816/order.patch
-	 */
-	remove_filter( 'the_title_rss', 'ent2ncr', 8 );
-	remove_filter( 'the_title_rss', 'esc_html' );
-	add_filter( 'the_title_rss',    'esc_html', 10 );
-	add_filter( 'the_title_rss',    'ent2ncr', 11 );
-
-	/**
 	 * 31190 - Solves ndash problem
 	 *
 	 * https://core.trac.wordpress.org/ticket/31190

@@ -19,6 +19,16 @@ foreach ( array( 'comment_author', 'term_name', 'link_name', 'link_description',
 }
 
 /**
+ * 28816 - Wow! This fixes most things
+ *
+ * https://core.trac.wordpress.org/attachment/ticket/28816/order.patch
+ */
+remove_filter( 'the_title_rss', 'ent2ncr', 8 );
+remove_filter( 'the_title_rss', 'esc_html' );
+add_filter( 'the_title_rss',    'esc_html', 10 );
+add_filter( 'the_title_rss',    'ent2ncr', 11 );
+
+/**
  * GUID
  * @pending 31080
  */
