@@ -3,8 +3,8 @@
 Plugin Name: Finely Tuned Feeds
 Version: 0.1-alpha
 Description: Feed 💗
-Author: stevenkword
-Author URI: YOUR SITE HERE
+Author: Steven Word
+Author URI: http://www.stevenword.com
 Plugin URI: PLUGIN SITE HERE
 Text Domain: finely-tuned-feeds
 Domain Path: /languages
