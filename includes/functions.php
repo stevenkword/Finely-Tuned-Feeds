@@ -13,7 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 function esc_xml( $text ) {
 
+	// Checks for invalid UTF8 in a string. This can be one step in sanitizing input data. For complete sanitizing, including checking for valid UTF8, use one of the sanitize_*() functions.
 	$safe_text = wp_check_invalid_utf8( $text );
+
+	//Converts a number of special characters into their HTML entities
 	$safe_text = _wp_specialchars( $safe_text, ENT_QUOTES );
 
 	/**
