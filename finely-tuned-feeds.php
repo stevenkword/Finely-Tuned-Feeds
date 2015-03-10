@@ -3,7 +3,7 @@
 Plugin Name: Finely Tuned Feeds
 Version: 0.1-alpha
 Description: Feed 💗
-Author: wpengine, stevenkword
+Author: stevenkword
 Author URI: YOUR SITE HERE
 Plugin URI: PLUGIN SITE HERE
 Text Domain: finely-tuned-feeds
