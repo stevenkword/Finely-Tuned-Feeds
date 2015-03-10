@@ -35,10 +35,10 @@ function esc_xml( $text ) {
 	 *
 	 * https://core.trac.wordpress.org/attachment/ticket/28816/order.patch
 	 */
-
-	add_filter( 'the_title_rss',      'esc_html',    10 );
-	add_filter( 'the_title_rss',      'ent2ncr',     11 );
-
+	remove_filter( 'the_title_rss', 'ent2ncr', 8 );
+	remove_filter( 'the_title_rss', 'esc_html' );
+	add_filter( 'the_title_rss',    'esc_html', 10 );
+	add_filter( 'the_title_rss',    'ent2ncr', 11 );
 
 	/**
 	 * 31190 - Solves ndash problem
