@@ -34,6 +34,6 @@ add_filter( 'the_title_rss',    'ent2ncr', 11 );
  */
 remove_filter( 'the_guid', 'esc_url' );
 function html_escape_the_guid( $guid ) {
-	return esc_html( $guid );
+	return esc_xml( $guid );
 }
 add_filter( 'the_guid', 'html_escape_the_guid' );
