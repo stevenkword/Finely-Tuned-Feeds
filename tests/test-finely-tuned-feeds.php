@@ -38,21 +38,30 @@ class Tests_Finely_Tuned_Feeds extends WP_UnitTestCase {
 	}
 
 	/**
-	 * Test potential encoding and formatting problems.
+	 * https://core.trac.wordpress.org/ticket/9992
 	 * @return [type] [description]
 	 */
-	function test_htmlentities() {
-		// Title test for #9993, 9992
-		$actual = esc_xml( '& > test <' );
-		$expected = '&amp; &gt; test &lt;';
+	function test_ticket_9992() {
+		$actual = apply_filters( 'the_title_rss', '> & test' );
+		$expected = '> & test';
 		$this->assertEquals( $expected, $actual );
 
-		$actual = esc_xml( '<test>This is a test</test>' );
-		$expected = '&lt;test&gt;This is a test&lt;/test&gt;';
+		$actual = apply_filters( 'the_title_rss', 'Johnson & Johnson' );
+		$expected = 'Johnson & Johnson';
+		$this->assertEquals( $expected, $actual );
+	}
+
+	/**
+	 * https://core.trac.wordpress.org/ticket/9993
+	 * @return [type] [description]
+	 */
+	function test_ticket_9993() {
+		$actual = apply_filters( 'the_title_rss', '& > test <' );
+		$expected = '& > test <';
 		$this->assertEquals( $expected, $actual );
 
-		$actual = esc_xml( 'Use <h1> to <h6> for headings, <p> for paragraphy, but not formatting' );
-		$expected = 'Use &lt;h1&gt; to &lt;h6&gt; for headings, &lt;p&gt; for paragraphy, but not formatting';
+		$actual = apply_filters( 'the_title_rss', '<test>This is a test</test>' );
+		$expected = '<test>This is a test</test>';
 		$this->assertEquals( $expected, $actual );
 	}
 }

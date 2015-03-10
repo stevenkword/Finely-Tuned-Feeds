@@ -11,14 +11,13 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  */
 remove_filter( 'the_title_rss', 'esc_html' );
 add_filter( 'the_title_rss', 'esc_xml' );
-
 remove_filter( 'comment_text_rss', 'esc_html' );
 add_filter( 'comment_text_rss', 'esc_xml' );
 
 /**
  * Default filters for esc_html()
  */
-add_filter( 'esc_xml', 'strip_for_xml' );
+//add_filter( 'esc_xml', 'strip_for_xml' );
 //add_filter( 'esc_xml', 'patch_31190' );
 //add_filter( 'esc_xml', 'strip_non_xml_entities' );
 
@@ -27,8 +26,13 @@ add_filter( 'esc_xml', 'strip_for_xml' );
 	 *
 	 * https://core.trac.wordpress.org/attachment/ticket/28816/order.patch
 	 */
-	add_filter( 'the_title_rss', 'esc_xml', 10 );
-	add_filter( 'the_title_rss', 'ent2ncr', 11 );
+	//add_filter( 'the_title_rss', 'esc_xml', 10 );
+	//add_filter( 'the_title_rss', 'ent2ncr', 11 );
+
+	/**
+	 * 9993 - Remove strip tags filter
+	 */
+	//remove_filter( 'the_title_rss', 'strip_tags' );
 
 /**
  * Other filters
