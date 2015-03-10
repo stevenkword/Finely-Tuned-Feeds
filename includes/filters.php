@@ -13,10 +13,12 @@ remove_filter( 'comment_text_rss', 'esc_html' );
 add_filter( 'comment_text_rss', 'esc_xml' );
 
 // Format strings for display.
+/*
 foreach ( array( 'comment_author', 'term_name', 'link_name', 'link_description', 'link_notes', 'bloginfo', 'wp_title', 'widget_title' ) as $filter ) {
 	remove_filter( $filter, 'esc_html' );
 	remove_filter( $filter, 'esc_xml' );
 }
+*/
 
 /* ---- Patches ---- /*
 
@@ -41,5 +43,5 @@ function html_escape_the_guid( $guid ) {
 add_filter( 'the_guid', 'html_escape_the_guid' );
 
 // Strip for XML
-add_filter( 'esc_xml',    'strip_for_xml' );
+add_filter( 'esc_xml', 'strip_for_xml' );
 //add_filter( 'esc_xml',    'patch_31190' );
