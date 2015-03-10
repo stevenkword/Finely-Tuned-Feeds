@@ -58,6 +58,20 @@ function esc_xml( $text ) {
 	return apply_filters( 'esc_xml', $safe_text, $text );
 }
 
+/**
+ * [strip_non_xml_entities description]
+ * @param  [type] $text [description]
+ * @return [type]       [description]
+ */
+function strip_non_xml_entities( $text ) {
+	//&amp;, &quot;, &lt;, &gt;, &apos;
+	//return str_replace("&ndash;", "", $text );
+
+    $str = html_entity_decode($text, ENT_QUOTES, 'UTF-8');
+    $str = preg_replace_callback("/(&#[0-9]+;)/", function($m) { return mb_convert_encoding($m[1], "UTF-8", "HTML-ENTITIES"); }, $str);
+    return $str;
+}
+
 function patch_31190( $text ) {
 	/**
 	 * 31190 - Solves ndash problem
@@ -65,7 +79,7 @@ function patch_31190( $text ) {
 	 * https://core.trac.wordpress.org/ticket/31190
 	 */
 	$safe_text = wp_kses_normalize_entities( $text );
-	$safe_text = str_replace( array("ndash","ndash;","&amp;ndash"), "", $safe_text );
+	$safe_text = str_replace( array("&amp;ndash"), "&amp; &ndash", $safe_text );
 	$safe_text = preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;', $safe_text);
 
 	return $safe_text;
