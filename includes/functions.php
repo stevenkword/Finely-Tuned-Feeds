@@ -31,15 +31,25 @@ function esc_xml( $text ) {
 	}
 
 	/**
+	 * 28816 - Wow! This fixes most things
+	 *
+	 * https://core.trac.wordpress.org/attachment/ticket/28816/order.patch
+	 */
+
+	add_filter( 'the_title_rss',      'esc_html',    10 );
+	add_filter( 'the_title_rss',      'ent2ncr',     11 );
+
+
+	/**
 	 * 31190 - Solves ndash problem
 	 *
 	 * https://core.trac.wordpress.org/ticket/31190
 	 *
 	 * @hack
 	 */
-	$safe_text = wp_kses_normalize_entities( $safe_text );
-	$safe_text = str_replace( array("ndash","ndash;","&amp;ndash"), "", $safe_text );
-	$safe_text = preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;', $safe_text);
+	//$safe_text = wp_kses_normalize_entities( $safe_text );
+	//$safe_text = str_replace( array("ndash","ndash;","&amp;ndash"), "", $safe_text );
+	//$safe_text = preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;', $safe_text);
 
 	/**
 	 * Filter a string cleaned and escaped for output in HTML.
