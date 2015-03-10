@@ -46,10 +46,10 @@ add_filter( 'comment_text_rss', 'esc_xml' );
  *
  * https://core.trac.wordpress.org/attachment/ticket/28816/order.patch
  */
-//add_filter( 'the_title_rss', 'esc_xml', 10 );
-//add_filter( 'the_title_rss', 'ent2ncr', 11 );
+add_filter( 'the_title_rss', 'esc_xml', 10 );
+add_filter( 'the_title_rss', 'ent2ncr', 11 );
 
 /**
  * 9993 - Remove strip tags filter
  */
-//remove_filter( 'the_title_rss', 'strip_tags' );
+remove_filter( 'the_title_rss', 'strip_tags' );

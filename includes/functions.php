@@ -43,6 +43,7 @@ function esc_xml( $text ) {
 	//Converts a number of special characters into their HTML entities
 	$safe_text = _wp_specialchars( $safe_text, ENT_QUOTES );
 
+	$valid_xml_entities = array( '&quot;', '&amp;', '&apos;', '&lt;', '&gt;' );
 	/**
 	 * Filter a string cleaned and escaped for output in XML.
 	 *
