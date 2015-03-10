@@ -14,11 +14,6 @@ Here is a short description of the plugin.  This should be no more than 150 char
 
 Proper XML escaping for WordPress
 
-This is the long description.  No limit, and you can use Markdown (as well as in the following sections).
-
-For backwards compatibility, if this section is missing, the full length of the short description will be used, and
-Markdown parsed.
-
 A few notes about the sections above:
 
 *   "Contributors" is a comma separated list of wp.org/wp-plugins.org usernames
