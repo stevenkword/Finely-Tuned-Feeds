@@ -3,7 +3,6 @@
 // Exit if this file is directly accessed
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-
 /**
  * Removes otherwise valid utf8 characters that break XML output.
  *
@@ -83,4 +82,13 @@ function patch_31190( $text ) {
 	$safe_text = preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;', $safe_text);
 
 	return $safe_text;
+}
+
+/**
+ * Debug Duck
+ * @param  [type] $text [description]
+ * @return [type]       [description]
+ */
+function debug_duck( $text ) {
+	return "Debug Duck";
 }

@@ -3,14 +3,7 @@
 // Exit if this file is directly accessed
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-/**
- * Debug Duck
- * @param  [type] $text [description]
- * @return [type]       [description]
- */
-function debug_duck( $text ) {
-	return "Debug Duck";
-}
+// Debug catch all that outputs "debug duck" on all esc_xml fields.
 //add_filter( 'esc_xml', 'debug_duck' );
 
 /**
