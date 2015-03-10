@@ -2,14 +2,13 @@
 /*
 Plugin Name: Finely Tuned Feeds
 Version: 0.1-alpha
-Description: Feed 💗
+Description: Feed 💗 ( Valid and Well-formed XML for WordPress )
 Author: Steven Word
 Author URI: http://www.stevenword.com
-Plugin URI: PLUGIN SITE HERE
+Plugin URI: https://github.com/stevenkword/Finely-Tuned-Feeds
 Text Domain: finely-tuned-feeds
 Domain Path: /languages
 */
-
 
 namespace WPEngine;
 
@@ -48,11 +47,18 @@ class Finely_Tuned_Feeds {
 		// Templates
 		remove_all_actions( 'do_feed_rss2' );
 
-		add_action( 'do_feed_rss2', array( self::instance(), 'ftf_rss2' ), 10, 1 );
+		add_action( 'do_feed_rss2', array( self::instance(), 'load_template_rss2' ), 10, 1 );
 
 	}
 
-	function ftf_rss2( $for_comments ) {
+	/**
+	 * Loads the replacement RSS2 template
+	 *
+	 * @param  [type] $for_comments [description]
+	 * @return [type]               [description]
+	 * @since  0.1.0
+	 */
+	function load_template_rss2( $for_comments ) {
 
 		$rss2_template = plugin_dir_path( __FILE__ ) . 'templates/feed-rss2.php';
 
