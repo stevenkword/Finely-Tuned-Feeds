@@ -45,9 +45,9 @@ class Finely_Tuned_Feeds {
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/functions.php' );
 
 		// Templates
-		remove_all_actions( 'do_feed_rss2' );
+		//remove_all_actions( 'do_feed_rss2' );
 
-		add_action( 'do_feed_rss2', array( self::instance(), 'load_template_rss2' ), 10, 1 );
+		//add_action( 'do_feed_rss2', array( self::instance(), 'load_template_rss2' ), 10, 1 );
 
 	}
 
