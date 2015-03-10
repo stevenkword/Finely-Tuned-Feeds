@@ -44,20 +44,6 @@ function esc_xml( $text ) {
 	//Converts a number of special characters into their HTML entities
 	$safe_text = _wp_specialchars( $safe_text, ENT_QUOTES );
 
-	// Strip for XML
-	$safe_text = strip_for_xml( $safe_text );
-
-	/**
-	 * 31190 - Solves ndash problem
-	 *
-	 * https://core.trac.wordpress.org/ticket/31190
-	 *
-	 * @hack
-	 */
-	//$safe_text = wp_kses_normalize_entities( $safe_text );
-	//$safe_text = str_replace( array("ndash","ndash;","&amp;ndash"), "", $safe_text );
-	//$safe_text = preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;', $safe_text);
-
 	/**
 	 * Filter a string cleaned and escaped for output in HTML.
 	 *
@@ -70,4 +56,15 @@ function esc_xml( $text ) {
  	 * @param string $text      The text prior to being escaped.
 	 */
 	return apply_filters( 'esc_xml', $safe_text, $text );
+}
+
+function patch_31190( $text ) {
+	/**
+	 * 31190 - Solves ndash problem
+	 *
+	 * https://core.trac.wordpress.org/ticket/31190
+	 */
+	$safe_text = wp_kses_normalize_entities( $text );
+	$safe_text = str_replace( array("ndash","ndash;","&amp;ndash"), "", $safe_text );
+	$safe_text = preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;', $safe_text);
 }

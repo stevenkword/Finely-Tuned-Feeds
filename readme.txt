@@ -13,4 +13,4 @@ Feed 💗 ( Valid and Well-formed XML for WordPress )
 
 Valid and Well-formed XML for WordPress
 
-* Acts of filters for 31080
+* Acts on 'the_guid' filter for 31080
