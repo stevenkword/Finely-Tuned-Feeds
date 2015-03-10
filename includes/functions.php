@@ -3,10 +3,35 @@
 // Exit if this file is directly accessed
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+
+/**
+ * Removes otherwise valid utf8 characters that break XML output.
+ *
+ * https://core.trac.wordpress.org/attachment/ticket/19998/19998b.patch
+ *
+ * When outputting user supplied content in an XML context we should strip these control and other unwanted characters - they are unprintable and just break feed parsers.
+ *
+ * @since 0.1.0
+ *
+ * @param string $string User supplied content that may contain dis-allowed characters.
+ * @return string Filtered string with space in place of removed characters.
+ */
+function strip_for_xml( $string ) {
+// Store the site charset as a static to avoid multiple calls to get_option()
+	static $is_utf8;
+	if ( ! isset( $is_utf8 ) ) {
+		$is_utf8 = in_array( get_option( 'blog_charset' ), array( 'utf8', 'utf-8', 'UTF8', 'UTF-8' ) );
+	}
+	if ( ! $is_utf8 ) {
+		return $string;
+	}
+	return preg_replace( '/[^\x{0009}\x{000a}\x{000d}\x{0020}-\x{D7FF}\x{E000}-\x{FFFD}]+/u', ' ', $string );
+}
+
 /**
  * Escaping for XML blocks.
  *
- * @since 2.8.0
+ * @since 0.1.0
  *
  * @param string $text
  * @return string
@@ -19,19 +44,8 @@ function esc_xml( $text ) {
 	//Converts a number of special characters into their HTML entities
 	$safe_text = _wp_specialchars( $safe_text, ENT_QUOTES );
 
-	/**
-	 * 19998 - Store the site charset as a static to avoid multiple calls to get_option()
-	 *
-	 * https://core.trac.wordpress.org/attachment/ticket/19998/19998b.patch
-	 * @var [type]
-	 */
-	static $is_utf8;
-	if ( ! isset( $is_utf8 ) ) {
-		$is_utf8 = in_array( get_option( 'blog_charset' ), array( 'utf8', 'utf-8', 'UTF8', 'UTF-8' ) );
-	}
-	if ( $is_utf8 ) {
-		$safe_text = preg_replace( '/[^\x{0009}\x{000a}\x{000d}\x{0020}-\x{D7FF}\x{E000}-\x{FFFD}]+/u', ' ', $safe_text );
-	}
+	// Strip for XML
+	$safe_text = strip_for_xml( $safe_text );
 
 	/**
 	 * 31190 - Solves ndash problem
