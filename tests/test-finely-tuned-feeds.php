@@ -43,11 +43,11 @@ class Tests_Finely_Tuned_Feeds extends WP_UnitTestCase {
 	 */
 	function test_ticket_9992() {
 		$actual = apply_filters( 'the_title_rss', '> & test' );
-		$expected = '> & test';
+		$expected = '&gt; &amp; test';
 		$this->assertEquals( $expected, $actual );
 
 		$actual = apply_filters( 'the_title_rss', 'Johnson & Johnson' );
-		$expected = 'Johnson & Johnson';
+		$expected = 'Johnson &amp; Johnson';
 		$this->assertEquals( $expected, $actual );
 	}
 
@@ -57,11 +57,11 @@ class Tests_Finely_Tuned_Feeds extends WP_UnitTestCase {
 	 */
 	function test_ticket_9993() {
 		$actual = apply_filters( 'the_title_rss', '& > test <' );
-		$expected = '& > test <';
+		$expected = '&amp; &gt; test &lt;';
 		$this->assertEquals( $expected, $actual );
 
 		$actual = apply_filters( 'the_title_rss', '<test>This is a test</test>' );
-		$expected = '<test>This is a test</test>';
+		$expected = '&lt;test&gt;This is a test&lt;/test&gt;';
 		$this->assertEquals( $expected, $actual );
 	}
 }
