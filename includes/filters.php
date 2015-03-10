@@ -4,6 +4,16 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
+ * Debug Duck
+ * @param  [type] $text [description]
+ * @return [type]       [description]
+ */
+function debug_duck( $text ) {
+	return "Debug Duck";
+}
+//add_filter( 'esc_xml', 'debug_duck' );
+
+/**
  * Replace Default Filters using esc_html with esc_xml
  */
 remove_filter( 'the_title_rss', 'esc_html' );

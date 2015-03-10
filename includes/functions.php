@@ -67,4 +67,6 @@ function patch_31190( $text ) {
 	$safe_text = wp_kses_normalize_entities( $text );
 	$safe_text = str_replace( array("ndash","ndash;","&amp;ndash"), "", $safe_text );
 	$safe_text = preg_replace('/&(?!#?[a-z0-9]+;)/', '&amp;', $safe_text);
+
+	return $safe_text;
 }
