@@ -22,14 +22,12 @@ add_filter( 'the_title_rss', 'esc_xml' );
 remove_filter( 'comment_text_rss', 'esc_html' );
 add_filter( 'comment_text_rss', 'esc_xml' );
 
-
 /* ---- Patches ---- */
 
 // Strip for XML
 add_filter( 'esc_xml', 'strip_for_xml' );
 //add_filter( 'esc_xml', 'patch_31190' );
 //add_filter( 'esc_xml', 'strip_non_xml_entities' );
-
 
 /**
  * 28816 - Wow! This fixes most things
