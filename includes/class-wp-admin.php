@@ -153,6 +153,7 @@ class Finely_Tuned_Feeds_Admin {
 									<li>🔥 <em>the hotness</em></li>
 									<li>🍺 <em>beer was involved</em></li>
 									<li>🐢 <em>liked by turtles</em></li>
+									<li>✨ <em>ooo shiny!</em></li>
 								</ul>
 							</div>
 						</div>
@@ -197,9 +198,9 @@ class Finely_Tuned_Feeds_Admin {
 							<th scope="row"><label for="wp_cache_status">Title escaping method:</label></th>
 							<td>
 								<fieldset>
-								<label><input type="radio" name="ftf_esc_method_title" value="1" checked="checked">Escape as HTML <em>(Default)</em></label><br>
+								<label><input type="radio" name="ftf_esc_method_title" value="1" checked="checked">Escape as HTML 💗🐢<em>(Default)</em></label><br>
 
-								<label><input type="radio" name="ftf_esc_method_title" value="2">Escape as XML 💗🔥<em>(Experimental)</em></label><br>
+								<label><input type="radio" name="ftf_esc_method_title" value="2">Escape as XML 🔥<em>(Experimental)</em></label><br>
 								</fieldset>
 							</td>
 						</tr>
@@ -208,9 +209,9 @@ class Finely_Tuned_Feeds_Admin {
 							<th scope="row"><label for="wp_cache_status">Comment escaping method:</label></th>
 							<td>
 								<fieldset>
-								<label><input type="radio" name="ftf_esc_method_comment" value="1" checked="checked">Escape as HTML <em>(Default)</em></label><br>
+								<label><input type="radio" name="ftf_esc_method_comment" value="1" checked="checked">Escape as HTML 💗🐢<em>(Default)</em></label><br>
 
-								<label><input type="radio" name="ftf_esc_method_comment" value="2">Escape as XML 💗🔥<em>(Experimental)</em></label><br>
+								<label><input type="radio" name="ftf_esc_method_comment" value="2">Escape as XML 🔥<em>(Experimental)</em></label><br>
 								</fieldset>
 							</td>
 						</tr>
@@ -227,7 +228,7 @@ class Finely_Tuned_Feeds_Admin {
 							<th scope="row"><label for="wp_cache_status">Replace RSS2 Template:</label></th>
 							<td>
 								<fieldset>
-								<label><input type="radio" name="ftf_template_rs2" value="1" checked="checked">no 💗<em>(Default)</em></label><br>
+								<label><input type="radio" name="ftf_template_rs2" value="1" checked="checked">no 💗🐢<em>(Default)</em></label><br>
 
 								<label><input type="radio" name="ftf_template_rs2" value="0">yes 🔥</label><br>
 
