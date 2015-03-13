@@ -159,7 +159,7 @@ class Finely_Tuned_Feeds_Admin {
 				</div>
 				<div id="post-body-content">
 
-					<p>These settings are not yet working!!!</p>
+					<p>Valid and Well-formed XML for WordPress. These settings are not yet working!!!</p>
 
 					<h2 class="title">RSS Escaping Methods</h2>
 
@@ -172,10 +172,10 @@ class Finely_Tuned_Feeds_Admin {
 								<fieldset>
 								<label><input type="radio" name="ftf_esc_method_guid" value="1" checked="checked">Escape as URL <em>(Default)</em></label><br>
 
-								<label><input type="radio" name="ftf_esc_method_guid" value="0">Escape as HTML</label><br>
+								<label><input type="radio" name="ftf_esc_method_guid" value="0">Escape as HTML 💗</label><br>
 
-								<label><input type="radio" name="ftf_esc_method_guid" value="2">Escape as XML <em>(Experimental)</em></label><br><br>
-								<em>Note: enables PHP caching, cache rebuild, and mobile support</em><br>
+								<label><input type="radio" name="ftf_esc_method_guid" value="2">Escape as XML 🔥<em>(Experimental)</em></label><br><br>
+								<em>Relates: <a href="https://core.trac.wordpress.org/ticket/31080" target="_blank">#31080</a></em><br>
 								</fieldset>
 							</td>
 						</tr>
@@ -186,7 +186,7 @@ class Finely_Tuned_Feeds_Admin {
 								<fieldset>
 								<label><input type="radio" name="ftf_esc_method_title" value="1" checked="checked">Escape as HTML <em>(Default)</em></label><br>
 
-								<label><input type="radio" name="ftf_esc_method_title" value="2">Escape as XML <em>(Experimental)</em></label><br>
+								<label><input type="radio" name="ftf_esc_method_title" value="2">Escape as XML 💗🔥<em>(Experimental)</em></label><br>
 								</fieldset>
 							</td>
 						</tr>
@@ -197,13 +197,35 @@ class Finely_Tuned_Feeds_Admin {
 								<fieldset>
 								<label><input type="radio" name="ftf_esc_method_comment" value="1" checked="checked">Escape as HTML <em>(Default)</em></label><br>
 
-								<label><input type="radio" name="ftf_esc_method_comment" value="2">Escape as XML <em>(Experimental)</em></label><br>
+								<label><input type="radio" name="ftf_esc_method_comment" value="2">Escape as XML 💗🔥<em>(Experimental)</em></label><br>
 								</fieldset>
 							</td>
 						</tr>
 
 						</tbody>
 					</table>
+
+					<h2 class="title">Template Overrides</h2>
+
+					<table class="form-table" style="clear: none;">
+						<tbody>
+
+						<tr valign="top">
+							<th scope="row"><label for="wp_cache_status">Replace RSS2 Template:</label></th>
+							<td>
+								<fieldset>
+								<label><input type="radio" name="ftf_template_rs2" value="1" checked="checked">no <em>(Default)</em></label><br>
+
+								<label><input type="radio" name="ftf_template_rs2" value="0">yes 💗🔥</label><br>
+
+								</fieldset>
+							</td>
+						</tr>
+						</tbody>
+					</table>
+
+					<p>💗 <em>denotes the plugin author's recommendation</em></p>
+					<p>🔥 <em>denotes the hotness</em></p>
 				</div>
 			</div>
 		</div><!--/.wrap-->
