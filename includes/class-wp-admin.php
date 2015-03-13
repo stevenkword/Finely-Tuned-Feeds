@@ -149,11 +149,11 @@ class Finely_Tuned_Feeds_Admin {
 							<h3 class="hndle"><span><?php _e( 'Legend', Finely_Tuned_Feeds::TEXT_DOMAIN );?></span></h3>
 							<div class="inside">
 								<ul class="bpaf-contact-links">
-									<li>💗 <em>recommended</em></li>
-									<li>🔥 <em>the hotness (experimental)</em></li>
-									<li>🐢 <em>liked by turtles (core functionality)</em></li>
-									<li>✨ <em>new and improved!</em></li>
-									<li>💣 <em>this could break all of the things</em></li>
+									<li>💗 <em>Recommended</em></li>
+									<li>🔥 <em>The hotness (experimental)</em></li>
+									<li>🐢 <em>WordPress Core functionality</em></li>
+									<li>✨ <em>New and improved!</em></li>
+									<li>💣 <em>This could break all of the things</em></li>
 								</ul>
 							</div>
 						</div>
@@ -184,12 +184,14 @@ class Finely_Tuned_Feeds_Admin {
 							<th scope="row"><label for="wp_cache_status">GUID escaping method:</label></th>
 							<td>
 								<fieldset>
-								<label><input type="radio" name="ftf_esc_method_guid" value="1" checked="checked">Escape as URL 🐢<em>(Default)</em></label><br>
+								<label><input type="radio" name="ftf_esc_method_guid" value="esc_url" checked="checked">Escape as URL 🐢<em>(default)</em></label><br>
 
-								<label><input type="radio" name="ftf_esc_method_guid" value="0">Escape as HTML 💗</label><br>
+								<label><input type="radio" name="ftf_esc_method_guid" value="esc_html">Escape as HTML 💗</label><br>
 
-								<label><input type="radio" name="ftf_esc_method_guid" value="2">Escape as XML 🔥</label><br><br>
-								<em>Relates: <a href="https://core.trac.wordpress.org/ticket/31080" target="_blank">#31080</a></em><br>
+								<label><input type="radio" name="ftf_esc_method_guid" value="esc_xml">Escape as XML 🔥</label><br>
+
+								<br><em>Relates: <a href="https://core.trac.wordpress.org/ticket/31080" target="_blank">#31080</a></em><br>
+
 								</fieldset>
 							</td>
 						</tr>
@@ -198,9 +200,16 @@ class Finely_Tuned_Feeds_Admin {
 							<th scope="row"><label for="wp_cache_status">Title escaping method:</label></th>
 							<td>
 								<fieldset>
-								<label><input type="radio" name="ftf_esc_method_title" value="1" checked="checked">Escape as HTML 💗🐢<em>(Default)</em></label><br>
+								<label><input type="radio" name="ftf_esc_method_title" value="esc_html" checked="checked">Escape as HTML 💗🐢<em>(default)</em></label><br>
 
-								<label><input type="radio" name="ftf_esc_method_title" value="2">Escape as XML 🔥</label><br>
+								<label><input type="radio" name="ftf_esc_method_title" value="esc_xml">Escape as XML 🔥</label><br>
+
+								<br><em>Relates:&nbsp;
+									<a href="https://core.trac.wordpress.org/ticket/9993" target="_blank">#9993</a>,&nbsp;
+									<a href="https://core.trac.wordpress.org/ticket/28816" target="_blank">#28816</a>,&nbsp;
+									<a href="https://core.trac.wordpress.org/ticket/13867" target="_blank">#13867</a>
+								</em><br>
+
 								</fieldset>
 							</td>
 						</tr>
@@ -209,9 +218,9 @@ class Finely_Tuned_Feeds_Admin {
 							<th scope="row"><label for="wp_cache_status">Comment escaping method:</label></th>
 							<td>
 								<fieldset>
-								<label><input type="radio" name="ftf_esc_method_comment" value="1" checked="checked">Escape as HTML 💗🐢<em>(Default)</em></label><br>
+								<label><input type="radio" name="ftf_esc_method_comment" value="esc_html" checked="checked">Escape as HTML 💗🐢<em>(default)</em></label><br>
 
-								<label><input type="radio" name="ftf_esc_method_comment" value="2">Escape as XML 🔥</label><br>
+								<label><input type="radio" name="ftf_esc_method_comment" value="esc_xml">Escape as XML 🔥</label><br>
 								</fieldset>
 							</td>
 						</tr>
@@ -228,7 +237,7 @@ class Finely_Tuned_Feeds_Admin {
 							<th scope="row"><label for="wp_cache_status">Replace RSS2 Template:</label></th>
 							<td>
 								<fieldset>
-								<label><input type="radio" name="ftf_template_rs2" value="1" checked="checked">no 💗🐢<em>(Default)</em></label><br>
+								<label><input type="radio" name="ftf_template_rs2" value="1" checked="checked">no 💗🐢<em>(default)</em></label><br>
 
 								<label><input type="radio" name="ftf_template_rs2" value="0">yes 🔥💣</label><br>
 
