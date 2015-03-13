@@ -4,7 +4,7 @@
  *
  * All of the administrative functionality for BuddyPress Automatic Friends.
  *
- * @link http://wordpress.org/plugins/bp-automatic-friends/
+ * @link http://wordpress.org/plugins/finely-tuned-feeds/
  * @since 2.0.0
  *
  * @package BuddyPress Automatic Friends
@@ -151,9 +151,9 @@ class Finely_Tuned_Feeds_Admin {
 							<h3 class="hndle"><span><?php _e( 'Support', Finely_Tuned_Feeds::TEXT_DOMAIN );?></span></h3>
 							<div class="inside">
 								<ul class="ftf-contact-links">
-									<li><a class="link-ftf-forum" href="http://wordpress.org/support/plugin/bp-automatic-friends" target="_blank"><?php _e( 'Support Forums', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
+									<li><a class="link-ftf-forum" href="http://wordpress.org/support/plugin/finely-tuned-feeds" target="_blank"><?php _e( 'Support Forums', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
 									<li><a class="link-ftf-github" href="https://github.com/stevenkword/Finely-Tuned-Feeds" target="_blank"><?php _e( 'GitHub Project', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
-									<li><a class="link-ftf-review" href="http://wordpress.org/support/view/plugin-reviews/bp-automatic-friends" target="_blank"><?php _e( 'Review on WordPress.org', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
+									<li><a class="link-ftf-review" href="http://wordpress.org/support/view/plugin-reviews/finely-tuned-feeds" target="_blank"><?php _e( 'Review on WordPress.org', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
 									<li><a class="link-ftf-contact" href="mailto:steven@wpengine.com?Subject=Finely%20Tuned%20%Feeds" target="_blank">Contact the Maintainer</a></li>
 								</ul>
 							</div>
