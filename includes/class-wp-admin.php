@@ -304,7 +304,26 @@ class Finely_Tuned_Feeds_Admin {
 	function display_striptags_tab(){
 		?>
 		<h2 class="title">Strip Tags</h2>
-		<p>@todo</p>
+
+		<table class="form-table" style="clear: none;">
+			<tbody>
+
+			<tr valign="top">
+				<th scope="row"><label for="wp_cache_status">Strip Tags from RSS Titles?</label></th>
+				<td>
+					<fieldset>
+					<label><input type="radio" name="ftf_striptags_all" value="esc_url" checked="checked">Yes 🐢<em>(default)</em></label><br>
+
+					<label><input type="radio" name="ftf_striptags_all" value="esc_html">No 💗🔥</label><br>
+
+					<br><em>Trac: <a href="https://core.trac.wordpress.org/ticket/19998" target="_blank">#19998</a></em><br>
+
+					</fieldset>
+				</td>
+			</tr>
+
+			</tbody>
+		</table>
 		<?php
 	}
 
