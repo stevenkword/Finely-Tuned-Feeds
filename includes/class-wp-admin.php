@@ -174,6 +174,15 @@ class Finely_Tuned_Feeds_Admin {
 
 					<p>Valid and Well-formed XML for WordPress</p>
 
+					<?php $active_tab = 'escaping'; ?>
+
+					<h2 class="nav-tab-wrapper" style="padding: 0;">
+						<a href="#" class="nav-tab <?php echo $active_tab == 'escaping' ? 'nav-tab-active' : ''; ?>">Escaping</a>
+						<a href="#" class="nav-tab <?php echo $active_tab == 'strip-tags' ? 'nav-tab-active' : ''; ?>">Strip Tags</a>
+						<a href="#" class="nav-tab <?php echo $active_tab == 'templates' ? 'nav-tab-active' : ''; ?>">Templates</a>
+						<a href="#" class="nav-tab <?php echo $active_tab == 'about' ? 'nav-tab-active' : ''; ?>">About</a>
+					</h2>
+
 					<h2 class="title">RSS Escaping Methods</h2>
 
 					<table class="form-table" style="clear: none;">
