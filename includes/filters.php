@@ -13,10 +13,10 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * https://core.trac.wordpress.org/changeset/31726
  */
 remove_filter( 'the_guid', 'esc_url' );
-function html_escape_the_guid( $guid ) {
+function xml_escape_the_guid( $guid ) {
 	return esc_xml( $guid );
 }
-add_filter( 'the_guid', 'html_escape_the_guid' );
+add_filter( 'the_guid', 'xml_escape_the_guid' );
 
 /**
  * Replace Core Title RSS Filters using `esc_html` with `esc_xml`
