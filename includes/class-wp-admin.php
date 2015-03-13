@@ -150,9 +150,9 @@ class Finely_Tuned_Feeds_Admin {
 							<div class="inside">
 								<ul class="bpaf-contact-links">
 									<li>💗 <em>recommended</em></li>
-									<li>🔥 <em>the hotness</em></li>
+									<li>🔥 <em>the hotness (experimental)</em></li>
+									<li>🐢 <em>liked by turtles (core functionality)</em></li>
 									<li>🍺 <em>beer was involved</em></li>
-									<li>🐢 <em>liked by turtles</em></li>
 									<li>✨ <em>ooo shiny!</em></li>
 								</ul>
 							</div>
@@ -188,7 +188,7 @@ class Finely_Tuned_Feeds_Admin {
 
 								<label><input type="radio" name="ftf_esc_method_guid" value="0">Escape as HTML 💗</label><br>
 
-								<label><input type="radio" name="ftf_esc_method_guid" value="2">Escape as XML 🔥<em>(Experimental)</em></label><br><br>
+								<label><input type="radio" name="ftf_esc_method_guid" value="2">Escape as XML 🔥</label><br><br>
 								<em>Relates: <a href="https://core.trac.wordpress.org/ticket/31080" target="_blank">#31080</a></em><br>
 								</fieldset>
 							</td>
@@ -200,7 +200,7 @@ class Finely_Tuned_Feeds_Admin {
 								<fieldset>
 								<label><input type="radio" name="ftf_esc_method_title" value="1" checked="checked">Escape as HTML 💗🐢<em>(Default)</em></label><br>
 
-								<label><input type="radio" name="ftf_esc_method_title" value="2">Escape as XML 🔥<em>(Experimental)</em></label><br>
+								<label><input type="radio" name="ftf_esc_method_title" value="2">Escape as XML 🔥</label><br>
 								</fieldset>
 							</td>
 						</tr>
@@ -211,7 +211,7 @@ class Finely_Tuned_Feeds_Admin {
 								<fieldset>
 								<label><input type="radio" name="ftf_esc_method_comment" value="1" checked="checked">Escape as HTML 💗🐢<em>(Default)</em></label><br>
 
-								<label><input type="radio" name="ftf_esc_method_comment" value="2">Escape as XML 🔥<em>(Experimental)</em></label><br>
+								<label><input type="radio" name="ftf_esc_method_comment" value="2">Escape as XML 🔥</label><br>
 								</fieldset>
 							</td>
 						</tr>
