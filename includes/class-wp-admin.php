@@ -54,7 +54,7 @@ class Finely_Tuned_Feeds_Admin {
 		global $pagenow;
 
 		// Setup
-		$this->plugins_url = plugins_url( '/bp-automatic-friends' );
+		$this->plugins_url = plugins_url( '/finely-tuned-feeds' );
 
 		// Admin Menu
 		add_action( is_multisite() ? 'network_admin_menu' : 'admin_menu', array( $this, 'action_admin_menu' ), 11 );
@@ -90,11 +90,10 @@ class Finely_Tuned_Feeds_Admin {
 	 * @return null
 	 */
 	public function action_admin_enqueue_scripts() {
-		//wp_enqueue_script( 'bpaf-admin', $this->plugins_url. '/js/admin.js', array( 'jquery', 'jquery-ui-autocomplete' ), Finely_Tuned_Feeds::REVISION, true );
 
-		//wp_enqueue_style( 'bpaf-genericons', $this->plugins_url . '/fonts/genericons/genericons.css', '', Finely_Tuned_Feeds::REVISION );
+		wp_enqueue_style( 'ftf-genericons', $this->plugins_url . '/fonts/genericons/genericons.css', '', Finely_Tuned_Feeds::REVISION );
 
-		//wp_enqueue_style( 'bpaf-admin', $this->plugins_url . '/css/admin.css', array( 'bpaf-genericons' ), Finely_Tuned_Feeds::REVISION );
+		wp_enqueue_style( 'ftf-admin', $this->plugins_url . '/css/admin.css', array( 'ftf-genericons' ), Finely_Tuned_Feeds::REVISION );
 	}
 
 	/**
@@ -149,11 +148,11 @@ class Finely_Tuned_Feeds_Admin {
 							<h3 class="hndle"><span><?php _e( 'Legend', Finely_Tuned_Feeds::TEXT_DOMAIN );?></span></h3>
 							<div class="inside">
 								<ul class="bpaf-contact-links">
-									<li>💗 <em>Recommended</em></li>
-									<li>🔥 <em>The hotness (experimental)</em></li>
-									<li>🐢 <em>WordPress Core functionality</em></li>
-									<li>✨ <em>New and improved!</em></li>
-									<li>💣 <em>This could break all of the things</em></li>
+									<li>💗 Recommended</li>
+									<li>🔥 The hotness (experimental)</li>
+									<li>🐢 WordPress Core functionality</li>
+									<li>✨ New and improved!</li>
+									<li>💣 This could break <u>all</u> of the things!</li>
 								</ul>
 							</div>
 						</div>
@@ -173,7 +172,7 @@ class Finely_Tuned_Feeds_Admin {
 				</div>
 				<div id="post-body-content">
 
-					<p>Valid and Well-formed XML for WordPress. These settings are not yet working!!!</p>
+					<p>Valid and Well-formed XML for WordPress</p>
 
 					<h2 class="title">RSS Escaping Methods</h2>
 
@@ -190,7 +189,7 @@ class Finely_Tuned_Feeds_Admin {
 
 								<label><input type="radio" name="ftf_esc_method_guid" value="esc_xml">Escape as XML 🔥</label><br>
 
-								<br><em>Relates: <a href="https://core.trac.wordpress.org/ticket/31080" target="_blank">#31080</a></em><br>
+								<br><em>Trac: <a href="https://core.trac.wordpress.org/ticket/31080" target="_blank">#31080</a></em><br>
 
 								</fieldset>
 							</td>
@@ -204,10 +203,10 @@ class Finely_Tuned_Feeds_Admin {
 
 								<label><input type="radio" name="ftf_esc_method_title" value="esc_xml">Escape as XML 🔥</label><br>
 
-								<br><em>Relates:&nbsp;
+								<br><em>Trac:&nbsp;
 									<a href="https://core.trac.wordpress.org/ticket/9993" target="_blank">#9993</a>,&nbsp;
-									<a href="https://core.trac.wordpress.org/ticket/28816" target="_blank">#28816</a>,&nbsp;
-									<a href="https://core.trac.wordpress.org/ticket/13867" target="_blank">#13867</a>
+									<a href="https://core.trac.wordpress.org/ticket/13867" target="_blank">#13867</a>,&nbsp;
+									<a href="https://core.trac.wordpress.org/ticket/28816" target="_blank">#28816</a>
 								</em><br>
 
 								</fieldset>
