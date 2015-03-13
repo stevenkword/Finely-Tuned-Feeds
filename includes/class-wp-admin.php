@@ -11,10 +11,12 @@
  * @subpackage Admin
  */
 
+namespace WPEngine;
+
 /**
  * BuddPress Automatic Friends Admin
  */
-class BPAF_Admin {
+class Finely_Tuned_Feeds_Admin {
 
 	public $plugins_url;
 
@@ -57,20 +59,10 @@ class BPAF_Admin {
 		// Admin Menu
 		add_action( is_multisite() ? 'network_admin_menu' : 'admin_menu', array( $this, 'action_admin_menu' ), 11 );
 
-		// AJAX
-		add_action( 'wp_ajax_bpaf_suggest_global_friend', array( $this, 'action_ajax_bpaf_suggest_global_friend' ) );
-		add_action( 'wp_ajax_bpaf_add_global_friend', array( $this, 'action_ajax_bpaf_add_global_friend' ) );
-		add_action( 'wp_ajax_bpaf_delete_global_friend', array( $this, 'action_ajax_bpaf_delete_global_friend' ) );
-
 		// User options
 		add_action( 'personal_options', array( $this, 'action_personal_options' )  );
 		add_action( 'personal_options_update', array( $this, 'action_personal_options_update' ) );
 		add_action( 'edit_user_profile_update', array( $this, 'action_personal_options_update' ) );
-
-		/* We don't need any of these things in other places */
-		if( 'users.php' != $pagenow || ! isset( $_REQUEST['page'] ) || 's8d-bpaf-settings' != $_REQUEST['page'] ) {
-			return;
-		}
 
 		// Init
 		add_action( 'admin_init', array( $this, 'action_admin_init' ) );
@@ -87,7 +79,7 @@ class BPAF_Admin {
 	 */
 	function action_admin_init() {
 		// Register Settings
-		register_setting( BPAF_Core::LEGACY_OPTION, BPAF_Core::LEGACY_OPTION, array( $this, 's8d_bpaf_settings_validate_options' ) );
+		//register_setting( Finely_Tuned_Feeds::LEGACY_OPTION, Finely_Tuned_Feeds::LEGACY_OPTION, array( $this, 's8d_Finely_Tuned_Feeds_settings_validate_options' ) );
 	}
 
 
@@ -98,10 +90,11 @@ class BPAF_Admin {
 	 * @return null
 	 */
 	public function action_admin_enqueue_scripts() {
-		wp_enqueue_script( 'bpaf-admin', $this->plugins_url. '/js/admin.js', array( 'jquery', 'jquery-ui-autocomplete' ), BPAF_Core::REVISION, true );
+		//wp_enqueue_script( 'bpaf-admin', $this->plugins_url. '/js/admin.js', array( 'jquery', 'jquery-ui-autocomplete' ), Finely_Tuned_Feeds::REVISION, true );
 
-		wp_enqueue_style( 'bpaf-genericons', $this->plugins_url . '/fonts/genericons/genericons.css', '', BPAF_Core::REVISION );
-		wp_enqueue_style( 'bpaf-admin', $this->plugins_url . '/css/admin.css', array( 'bpaf-genericons' ), BPAF_Core::REVISION );
+		//wp_enqueue_style( 'bpaf-genericons', $this->plugins_url . '/fonts/genericons/genericons.css', '', Finely_Tuned_Feeds::REVISION );
+
+		//wp_enqueue_style( 'bpaf-admin', $this->plugins_url . '/css/admin.css', array( 'bpaf-genericons' ), Finely_Tuned_Feeds::REVISION );
 	}
 
 	/**
@@ -115,7 +108,8 @@ class BPAF_Admin {
 		if ( ! is_super_admin() )
 			return false;
 
-		add_users_page( __( 'Automatic Friends', BPAF_Core::TEXT_DOMAIN), __( 'Automatic Friends', BPAF_Core::TEXT_DOMAIN ), 'manage_options', 's8d-bpaf-settings', array( $this, 'settings_page' ) );
+		add_submenu_page( 'options-general.php', __( 'Finely Tuned Feeds', Finely_Tuned_Feeds::TEXT_DOMAIN ), __( 'Finely Tuned Feeds', Finely_Tuned_Feeds::TEXT_DOMAIN ), 'manage_options', 'finely-tuned-feeds-settings', array( $this, 'settings_page' )  );
+
 	}
 
 	/**
@@ -128,16 +122,17 @@ class BPAF_Admin {
 		?>
 		<div class="wrap">
 			<?php //screen_icon(); ?>
-			<h2><?php _e( 'BuddyPress Automatic Friends', BPAF_Core::TEXT_DOMAIN );?></h2>
+			<h2><span class="dashicons dashicons-rss" style="font-size: 1.2em;"></span>&nbsp;&nbsp;<?php _e( 'Finely Tuned Feeds', Finely_Tuned_Feeds::TEXT_DOMAIN );?></h2>
 			<div id="poststuff" class="metabox-holder has-right-sidebar">
 				<div class="inner-sidebar" id="side-info-column">
 					<div id="side-sortables" class="meta-box-sortables ui-sortable">
-						<div id="bpaf_display_option" class="postbox ">
-							<h3 class="hndle"><span><?php _e( 'Help Improve BP Automatic Friends', BPAF_Core::TEXT_DOMAIN );?></span></h3>
+						<!--
+						<div id="Finely_Tuned_Feeds_display_option" class="postbox ">
+							<h3 class="hndle"><span><?php _e( 'Help Improve BP Automatic Friends', Finely_Tuned_Feeds::TEXT_DOMAIN );?></span></h3>
 							<div class="inside">
-								<p><?php _e( 'We would really appreciate your input to help us continue to improve the product.', BPAF_Core::TEXT_DOMAIN );?></p>
+								<p><?php _e( 'We would really appreciate your input to help us continue to improve the product.', Finely_Tuned_Feeds::TEXT_DOMAIN );?></p>
 								<p>
-								<?php printf( __( 'Find us on %1$s or donate to the project using the button below.', BPAF_Core::TEXT_DOMAIN ), '<a href="https://github.com/stevenkword/BuddyPress-Automatic-Friends" target="_blank">GitHub</a>' ); ?>
+								<?php printf( __( 'Find us on %1$s or donate to the project using the button below.', Finely_Tuned_Feeds::TEXT_DOMAIN ), '<a href="https://github.com/stevenkword/BuddyPress-Automatic-Friends" target="_blank">GitHub</a>' ); ?>
 								</p>
 								<div style="width: 100%; text-align: center;">
 									<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
@@ -149,31 +144,66 @@ class BPAF_Admin {
 								</div>
 							</div>
 						</div>
-						<div id="bpaf_display_contact" class="postbox ">
-							<h3 class="hndle"><span><?php _e( 'Contact BP Automatic Friends', BPAF_Core::TEXT_DOMAIN );?></span></h3>
+						-->
+						<div id="Finely_Tuned_Feeds_display_contact" class="postbox ">
+							<h3 class="hndle"><span><?php _e( 'Support', Finely_Tuned_Feeds::TEXT_DOMAIN );?></span></h3>
 							<div class="inside">
 								<ul class="bpaf-contact-links">
-									<li><a class="link-bpaf-forum" href="http://wordpress.org/support/plugin/bp-automatic-friends" target="_blank"><?php _e( 'Support Forums', BPAF_Core::TEXT_DOMAIN );?></a></li>
-									<li><a class="link-bpaf-web" href="http://stevenword.com/plugins/bp-automatic-friends/" target="_blank"><?php _e( 'BP Automatic Friends on the Web', BPAF_Core::TEXT_DOMAIN );?></a></li>
-									<li><a class="link-bpaf-github" href="https://github.com/stevenkword/BuddyPress-Automatic-Friends" target="_blank"><?php _e( 'GitHub Project', BPAF_Core::TEXT_DOMAIN );?></a></li>
-									<li><a class="link-bpaf-review" href="http://wordpress.org/support/view/plugin-reviews/bp-automatic-friends" target="_blank"><?php _e( 'Review on WordPress.org', BPAF_Core::TEXT_DOMAIN );?></a></li>
+									<li><a class="link-bpaf-forum" href="http://wordpress.org/support/plugin/bp-automatic-friends" target="_blank"><?php _e( 'Support Forums', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
+									<li><a class="link-bpaf-github" href="https://github.com/stevenkword/Finely-Tuned-Feeds" target="_blank"><?php _e( 'GitHub Project', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
+									<li><a class="link-bpaf-review" href="http://wordpress.org/support/view/plugin-reviews/bp-automatic-friends" target="_blank"><?php _e( 'Review on WordPress.org', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
 								</ul>
 							</div>
 						</div>
 					</div>
 				</div>
 				<div id="post-body-content">
-					<p><?php _e( 'When new user accounts are registered, friendships between the new user and each of the following global friends will be created automatically.', BPAF_Core::TEXT_DOMAIN );?></p>
-					<h3 style="float: left; margin:1em 0;padding:0; line-height:2em;"><?php _e( 'Global Friends', BPAF_Core::TEXT_DOMAIN );?></h3>
-					<div style="padding: 1em 0;">
-						<?php $search_text = __('Search by Username', BPAF_Core::TEXT_DOMAIN );?>
-						<input type="text" name="add-global-friend-field" id="add-global-friend-field" style="margin-left: 1em; color: #aaa;"value="<?php echo $search_text;?>" onfocus="if (this.value == '<?php echo $search_text;?>') {this.value = '';}" onblur="if (this.value == '') {this.value = '<?php echo $search_text;?>';}" size="40" maxlength="128">
-						<button id="add-global-friend-button" class="button" disabled="disabled"><?php _e( 'Add User', BPAF_Core::TEXT_DOMAIN );?></button>
-						<span class="spinner"></span>
-					</div>
-					<div id="global-friend-table-container">
-						<?php $this->render_global_friend_table();?>
-					</div>
+
+					<p>These settings are not yet working!!!</p>
+
+					<h2 class="title">RSS Escaping Methods</h2>
+
+					<table class="form-table" style="clear: none;">
+						<tbody>
+
+						<tr valign="top">
+							<th scope="row"><label for="wp_cache_status">GUID escaping method:</label></th>
+							<td>
+								<fieldset>
+								<label><input type="radio" name="ftf_esc_method_guid" value="1" checked="checked">Escape as URL <em>(Default)</em></label><br>
+
+								<label><input type="radio" name="ftf_esc_method_guid" value="0">Escape as HTML</label><br>
+
+								<label><input type="radio" name="ftf_esc_method_guid" value="2">Escape as XML <em>(Experimental)</em></label><br><br>
+								<em>Note: enables PHP caching, cache rebuild, and mobile support</em><br>
+								</fieldset>
+							</td>
+						</tr>
+
+						<tr valign="top">
+							<th scope="row"><label for="wp_cache_status">Title escaping method:</label></th>
+							<td>
+								<fieldset>
+								<label><input type="radio" name="ftf_esc_method_title" value="1" checked="checked">Escape as HTML <em>(Default)</em></label><br>
+
+								<label><input type="radio" name="ftf_esc_method_title" value="2">Escape as XML <em>(Experimental)</em></label><br>
+								</fieldset>
+							</td>
+						</tr>
+
+						<tr valign="top">
+							<th scope="row"><label for="wp_cache_status">Comment escaping method:</label></th>
+							<td>
+								<fieldset>
+								<label><input type="radio" name="ftf_esc_method_comment" value="1" checked="checked">Escape as HTML <em>(Default)</em></label><br>
+
+								<label><input type="radio" name="ftf_esc_method_comment" value="2">Escape as XML <em>(Experimental)</em></label><br>
+								</fieldset>
+							</td>
+						</tr>
+
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div><!--/.wrap-->
@@ -186,18 +216,18 @@ class BPAF_Admin {
 	 * @return null
 	 */
 	function action_personal_options( $user ) {
-		$meta_value = get_user_meta( $user->ID, BPAF_Core::METAKEY, true );
+		$meta_value = get_user_meta( $user->ID, Finely_Tuned_Feeds::METAKEY, true );
 		?>
 			</table>
 			<table class="form-table">
-			<h3><?php _e( 'BuddyPress Automatic Friends', BPAF_Core::TEXT_DOMAIN );?></h3>
+			<h3><?php _e( 'BuddyPress Automatic Friends', Finely_Tuned_Feeds::TEXT_DOMAIN );?></h3>
 			<tr>
-				<th scope="row"><?php _e( 'Global Friend', BPAF_Core::TEXT_DOMAIN );?></th>
+				<th scope="row"><?php _e( 'Global Friend', Finely_Tuned_Feeds::TEXT_DOMAIN );?></th>
 				<td>
 					<label for="global-friend">
 						<input type="checkbox" id="global-friend" name="global-friend" <?php checked( $meta_value ); ?> />
-						<span> <?php _e( 'Automatically create friendships with all new users', BPAF_Core::TEXT_DOMAIN );?></span>
-						<?php wp_nonce_field( BPAF_Core::NONCE, BPAF_Core::NONCE, false ); ?>
+						<span> <?php _e( 'Automatically create friendships with all new users', Finely_Tuned_Feeds::TEXT_DOMAIN );?></span>
+						<?php wp_nonce_field( Finely_Tuned_Feeds::NONCE, Finely_Tuned_Feeds::NONCE, false ); ?>
 					</label>
 				</td>
 			</tr>
@@ -210,17 +240,15 @@ class BPAF_Admin {
 	 * @since 2.0.0
 	 */
 	function action_personal_options_update( $user_id ) {
+		return;
 		// Nonce check
-		if ( ! wp_verify_nonce( $_REQUEST[ BPAF_Core::NONCE ], BPAF_Core::NONCE ) || ! current_user_can( 'edit_user', $user_id ) ) {
-			wp_die( BPAF_Core::NONCE_FAIL_MSG );
+		if ( ! wp_verify_nonce( $_REQUEST[ Finely_Tuned_Feeds::NONCE ], Finely_Tuned_Feeds::NONCE ) || ! current_user_can( 'edit_user', $user_id ) ) {
+			wp_die( Finely_Tuned_Feeds::NONCE_FAIL_MSG );
 		}
 
 		$meta_value = isset( $_REQUEST['global-friend'] ) ? true : false;
-		update_usermeta( $user_id, BPAF_Core::METAKEY, $meta_value );
-
-		// Update the friend counts
-		BP_Friends_Friendship::total_friend_count( $user_id );
+		update_usermeta( $user_id, Finely_Tuned_Feeds::METAKEY, $meta_value );
 	}
 
 } // Class
-BPAF_Admin::instance();
+Finely_Tuned_Feeds_Admin::instance();

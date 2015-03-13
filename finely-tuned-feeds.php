@@ -20,6 +20,12 @@ class Finely_Tuned_Feeds {
 	// Define and register singleton
 	private static $instance = null;
 
+	const VERSION        = '0.1.0';
+	const REVISION       = '20150313';
+	const NONCE          = 'finely_tuned_feeds_nonce';
+	const NONCE_FAIL_MSG = 'Cheatin&#8217; huh?';
+	const TEXT_DOMAIN    = 'finely-tuned-feeds';
+
 	/**
 	 * Register singleton
 	 *
@@ -46,7 +52,7 @@ class Finely_Tuned_Feeds {
 
 		// WP Admin functions
 		if( is_admin() ) {
-			require_once( plugin_dir_path( __FILE__ ) . 'includes/class-admin.php' );
+			require_once( plugin_dir_path( __FILE__ ) . 'includes/class-wp-admin.php' );
 		}
 
 
