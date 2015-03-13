@@ -125,25 +125,6 @@ class Finely_Tuned_Feeds_Admin {
 			<div id="poststuff" class="metabox-holder has-right-sidebar">
 				<div class="inner-sidebar" id="side-info-column">
 					<div id="side-sortables" class="meta-box-sortables ui-sortable">
-						<!--
-						<div id="Finely_Tuned_Feeds_display_option" class="postbox ">
-							<h3 class="hndle"><span><?php _e( 'Help Improve BP Automatic Friends', Finely_Tuned_Feeds::TEXT_DOMAIN );?></span></h3>
-							<div class="inside">
-								<p><?php _e( 'We would really appreciate your input to help us continue to improve the product.', Finely_Tuned_Feeds::TEXT_DOMAIN );?></p>
-								<p>
-								<?php printf( __( 'Find us on %1$s or donate to the project using the button below.', Finely_Tuned_Feeds::TEXT_DOMAIN ), '<a href="https://github.com/stevenkword/BuddyPress-Automatic-Friends" target="_blank">GitHub</a>' ); ?>
-								</p>
-								<div style="width: 100%; text-align: center;">
-									<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank">
-										<input type="hidden" name="cmd" value="_s-xclick">
-										<input type="hidden" name="hosted_button_id" value="DWK9EXNAHLZ42">
-										<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-										<img alt="" border="0" src="https://www.paypalobjects.com/en_US/i/scr/pixel.gif" width="1" height="1">
-									</form>
-								</div>
-							</div>
-						</div>
-						-->
 						<div id="Finely_Tuned_Feeds_display_contact" class="postbox ">
 							<h3 class="hndle"><span><?php _e( 'Legend', Finely_Tuned_Feeds::TEXT_DOMAIN );?></span></h3>
 							<div class="inside">
@@ -184,77 +165,19 @@ class Finely_Tuned_Feeds_Admin {
 						<a href="#" class="nav-tab <?php echo $active_tab == 'about' ? 'nav-tab-active' : ''; ?>">About</a>
 					</h2>
 
-					<h2 class="title">RSS Escaping Methods</h2>
-
-					<table class="form-table" style="clear: none;">
-						<tbody>
-
-						<tr valign="top">
-							<th scope="row"><label for="wp_cache_status">GUID escaping method:</label></th>
-							<td>
-								<fieldset>
-								<label><input type="radio" name="ftf_esc_method_guid" value="esc_url" checked="checked">Escape as URL 🐢<em>(default)</em></label><br>
-
-								<label><input type="radio" name="ftf_esc_method_guid" value="esc_html">Escape as HTML 💗</label><br>
-
-								<label><input type="radio" name="ftf_esc_method_guid" value="esc_xml">Escape as XML 🔥</label><br>
-
-								<br><em>Trac: <a href="https://core.trac.wordpress.org/ticket/31080" target="_blank">#31080</a></em><br>
-
-								</fieldset>
-							</td>
-						</tr>
-
-						<tr valign="top">
-							<th scope="row"><label for="wp_cache_status">Title escaping method:</label></th>
-							<td>
-								<fieldset>
-								<label><input type="radio" name="ftf_esc_method_title" value="esc_html" checked="checked">Escape as HTML 💗🐢<em>(default)</em></label><br>
-
-								<label><input type="radio" name="ftf_esc_method_title" value="esc_xml">Escape as XML 🔥</label><br>
-
-								<br><em>Trac:&nbsp;
-									<a href="https://core.trac.wordpress.org/ticket/9993" target="_blank">#9993</a>,&nbsp;
-									<a href="https://core.trac.wordpress.org/ticket/13867" target="_blank">#13867</a>,&nbsp;
-									<a href="https://core.trac.wordpress.org/ticket/28816" target="_blank">#28816</a>
-								</em><br>
-
-								</fieldset>
-							</td>
-						</tr>
-
-						<tr valign="top">
-							<th scope="row"><label for="wp_cache_status">Comment escaping method:</label></th>
-							<td>
-								<fieldset>
-								<label><input type="radio" name="ftf_esc_method_comment" value="esc_html" checked="checked">Escape as HTML 💗🐢<em>(default)</em></label><br>
-
-								<label><input type="radio" name="ftf_esc_method_comment" value="esc_xml">Escape as XML 🔥</label><br>
-								</fieldset>
-							</td>
-						</tr>
-
-						</tbody>
-					</table>
-
-					<h2 class="title">Template Overrides</h2>
-
-					<table class="form-table" style="clear: none;">
-						<tbody>
-
-						<tr valign="top">
-							<th scope="row"><label for="wp_cache_status">Replace RSS2 Template:</label></th>
-							<td>
-								<fieldset>
-								<label><input type="radio" name="ftf_template_rs2" value="1" checked="checked">no 💗🐢<em>(default)</em></label><br>
-
-								<label><input type="radio" name="ftf_template_rs2" value="0">yes 🔥💣</label><br>
-
-								</fieldset>
-							</td>
-						</tr>
-						</tbody>
-					</table>
+					<form method="post" action="options.php">
+						<?php
+						if( $active_tab == 'escaping' ) {
+							self::display_escaping_tab();
+							submit_button();
+						} elseif( $active_tab == 'about' ) {
+							self::display_about_tab();
+						} else {
+							self::display_general_options();
+							submit_button();
+						} // end if/else
+						?>
+					</form>
 				</div>
 			</div>
 		</div><!--/.wrap-->
@@ -299,6 +222,95 @@ class Finely_Tuned_Feeds_Admin {
 
 		$meta_value = isset( $_REQUEST['global-friend'] ) ? true : false;
 		update_usermeta( $user_id, Finely_Tuned_Feeds::METAKEY, $meta_value );
+	}
+
+	function display_escaping_tab(){
+		?>
+		<h2 class="title">RSS Escaping Methods</h2>
+
+		<table class="form-table" style="clear: none;">
+			<tbody>
+
+			<tr valign="top">
+				<th scope="row"><label for="wp_cache_status">GUID escaping method:</label></th>
+				<td>
+					<fieldset>
+					<label><input type="radio" name="ftf_esc_method_guid" value="esc_url" checked="checked">Escape as URL 🐢<em>(default)</em></label><br>
+
+					<label><input type="radio" name="ftf_esc_method_guid" value="esc_html">Escape as HTML 💗</label><br>
+
+					<label><input type="radio" name="ftf_esc_method_guid" value="esc_xml">Escape as XML 🔥</label><br>
+
+					<br><em>Trac: <a href="https://core.trac.wordpress.org/ticket/31080" target="_blank">#31080</a></em><br>
+
+					</fieldset>
+				</td>
+			</tr>
+
+			<tr valign="top">
+				<th scope="row"><label for="wp_cache_status">Title escaping method:</label></th>
+				<td>
+					<fieldset>
+					<label><input type="radio" name="ftf_esc_method_title" value="esc_html" checked="checked">Escape as HTML 💗🐢<em>(default)</em></label><br>
+
+					<label><input type="radio" name="ftf_esc_method_title" value="esc_xml">Escape as XML 🔥</label><br>
+
+					<br><em>Trac:&nbsp;
+						<a href="https://core.trac.wordpress.org/ticket/9993" target="_blank">#9993</a>,&nbsp;
+						<a href="https://core.trac.wordpress.org/ticket/13867" target="_blank">#13867</a>,&nbsp;
+						<a href="https://core.trac.wordpress.org/ticket/28816" target="_blank">#28816</a>
+					</em><br>
+
+					</fieldset>
+				</td>
+			</tr>
+
+			<tr valign="top">
+				<th scope="row"><label for="wp_cache_status">Comment escaping method:</label></th>
+				<td>
+					<fieldset>
+					<label><input type="radio" name="ftf_esc_method_comment" value="esc_html" checked="checked">Escape as HTML 💗🐢<em>(default)</em></label><br>
+
+					<label><input type="radio" name="ftf_esc_method_comment" value="esc_xml">Escape as XML 🔥</label><br>
+					</fieldset>
+				</td>
+			</tr>
+
+			</tbody>
+		</table>
+		<?php
+	}
+
+	function display_templates_tab(){
+		?>
+		<h2 class="title">Template Overrides</h2>
+
+		<table class="form-table" style="clear: none;">
+			<tbody>
+
+			<tr valign="top">
+				<th scope="row"><label for="wp_cache_status">Replace RSS2 Template:</label></th>
+				<td>
+					<fieldset>
+					<label><input type="radio" name="ftf_template_rs2" value="1" checked="checked">no 💗🐢<em>(default)</em></label><br>
+
+					<label><input type="radio" name="ftf_template_rs2" value="0">yes 🔥💣</label><br>
+
+					</fieldset>
+				</td>
+			</tr>
+			</tbody>
+		</table>
+		<?php
+	}
+
+	function display_about_tab(){
+		//Get plugin path
+		$plugin_path = dirname( dirname( __FILE__ ) );
+		$master_plan_file = fopen( $plugin_path . '/readme.txt', 'r' );
+		while ( ! feof( $master_plan_file ) )
+			echo fgets( $master_plan_file ) . '<br />';
+		fclose( $master_plan_file );
 	}
 
 } // Class
