@@ -25,3 +25,4 @@
 .link-ftf-web::before { content: '\f409'; /* `home` genericon gylph */ }
 .link-ftf-github::before { content: '\f200'; /* GitHub logo genericon gylph */ }
 .link-ftf-review::before { content: '\f205'; /* WordPress genericon gylph */ }
+.link-ftf-contact::before { content: '\f50c'; /* WordPress genericon gylph */ }

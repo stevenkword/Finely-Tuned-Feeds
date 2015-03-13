@@ -21,7 +21,7 @@ class Finely_Tuned_Feeds {
 	private static $instance = null;
 
 	const VERSION        = '0.1.0';
-	const REVISION       = '20150313';
+	const REVISION       = '20150314';
 	const NONCE          = 'finely_tuned_feeds_nonce';
 	const NONCE_FAIL_MSG = 'Cheatin&#8217; huh?';
 	const TEXT_DOMAIN    = 'finely-tuned-feeds';
