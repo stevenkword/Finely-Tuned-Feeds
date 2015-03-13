@@ -152,8 +152,8 @@ class Finely_Tuned_Feeds_Admin {
 									<li>💗 <em>recommended</em></li>
 									<li>🔥 <em>the hotness (experimental)</em></li>
 									<li>🐢 <em>liked by turtles (core functionality)</em></li>
-									<li>🍺 <em>beer was involved</em></li>
-									<li>✨ <em>ooo shiny!</em></li>
+									<li>✨ <em>new and improved!</em></li>
+									<li>💣 <em>this could break all of the things</em></li>
 								</ul>
 							</div>
 						</div>
@@ -230,7 +230,7 @@ class Finely_Tuned_Feeds_Admin {
 								<fieldset>
 								<label><input type="radio" name="ftf_template_rs2" value="1" checked="checked">no 💗🐢<em>(Default)</em></label><br>
 
-								<label><input type="radio" name="ftf_template_rs2" value="0">yes 🔥</label><br>
+								<label><input type="radio" name="ftf_template_rs2" value="0">yes 🔥💣</label><br>
 
 								</fieldset>
 							</td>
