@@ -91,9 +91,16 @@ class Finely_Tuned_Feeds_Admin {
 	 */
 	public function action_admin_enqueue_scripts() {
 
+		// Only add this variable on the settings page
+		//if( ! self::is_settings_page() ) {
+			//return;
+		//}
+		// Settings Styles
 		wp_enqueue_style( 'ftf-genericons', $this->plugins_url . '/fonts/genericons/genericons.css', '', Finely_Tuned_Feeds::REVISION );
+		wp_enqueue_style( 'ftf-admin-settings', $this->plugins_url . '/css/settings.css', '', Finely_Tuned_Feeds::REVISION );
 
-		wp_enqueue_style( 'ftf-admin', $this->plugins_url . '/css/admin.css', array( 'ftf-genericons' ), Finely_Tuned_Feeds::REVISION );
+
+
 	}
 
 	/**
@@ -295,7 +302,10 @@ class Finely_Tuned_Feeds_Admin {
 	 * @return [type] [description]
 	 */
 	function display_striptags_tab(){
-		echo '@todo';
+		?>
+		<h2 class="title">Strip Tags</h2>
+		<p>@todo</p>
+		<?php
 	}
 
 	/**
@@ -330,6 +340,10 @@ class Finely_Tuned_Feeds_Admin {
 	 * @return [type] [description]
 	 */
 	function display_about_tab(){
+		?>
+		<h2 class="title">About Finely Tuned Feeds</h2>
+		<?php
+
 		//Get plugin path
 		$plugin_path = dirname( dirname( __FILE__ ) );
 		$master_plan_file = fopen( $plugin_path . '/readme.txt', 'r' );

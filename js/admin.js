@@ -1,12 +1,12 @@
-var WPPresentAdmin;
+var ftfAdmin;
 (function($) {
 
-	WPPresentAdmin = function() {
+	ftfAdmin = function() {
 		this.init();
 		return this;
 	};
 
-	WPPresentAdmin.prototype = {
+	ftfAdmin.prototype = {
 		init: function() {
 			var self = this;
 			var currentContainerWidth= $('#container').width();
@@ -662,10 +662,10 @@ var WPPresentAdmin;
 
 			$editor.css( 'display', 'block' );
 
-			if( WPPresentAdmin.maxModalEditorHeight < 1 ) {
-				WPPresentAdmin.maxModalEditorHeight = Math.round( $editor.height() );
+			if( ftfAdmin.maxModalEditorHeight < 1 ) {
+				ftfAdmin.maxModalEditorHeight = Math.round( $editor.height() );
 			}
-			editorHeightFull = Math.round( WPPresentAdmin.maxModalEditorHeight );
+			editorHeightFull = Math.round( ftfAdmin.maxModalEditorHeight );
 //alert(editorHeightFull);
 			$editor.css( 'display', 'table' );
 			var editorHeightTable = Math.round( $editor.height() );
@@ -682,5 +682,5 @@ var WPPresentAdmin;
 	};
 
 })(jQuery);
-var slideManager = new WPPresentAdmin();
-WPPresentAdmin.maxModalEditorHeight = 0;
+var slideManager = new ftfAdmin();
+ftfAdmin.maxModalEditorHeight = 0;

@@ -1,7 +1,7 @@
 /**
  * editor_plugin_src.js
  */
-tinymce.create('tinymce.plugins.WPPresentTinymceCustomizer', {
+tinymce.create('tinymce.plugins.ftfTinymceCustomizer', {
 init : function(ed, url) {
 	/*alert(url);*/
     ed.onInit.add( function() {
@@ -26,7 +26,7 @@ init : function(ed, url) {
 
     });
 
-   ed.addButton('WPPresentTinymceCustomizerButton', {
+   ed.addButton('ftfTinymceCustomizerButton', {
 	  title : 'Tickerize Content',
 		  onclick : function() {
 			alert('wow');
@@ -56,4 +56,4 @@ getInfo : function() {
 }
 
 });
-tinymce.PluginManager.add('WPPresentTinymceCustomizer', tinymce.plugins.WPPresentTinymceCustomizer);
+tinymce.PluginManager.add('ftfTinymceCustomizer', tinymce.plugins.ftfTinymceCustomizer);

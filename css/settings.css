@@ -10,10 +10,10 @@
     display: none; /*display: inline-block;*/
 }
 
-.link-wppresent-forum::before,
-.link-wppresent-web::before,
-.link-wppresent-github::before,
-.link-wppresent-review::before {
+.link-ftf-forum::before,
+.link-ftf-web::before,
+.link-ftf-github::before,
+.link-ftf-review::before {
     display: inline-block;
     -webkit-font-smoothing: antialiased;
     font: normal 1.5em/1 'Genericons';
@@ -21,7 +21,7 @@
     padding-right: 0.25em;
 }
 
-.link-wppresent-forum::before { content: '\f108'; /* `chat` genericon gylph */ }
-.link-wppresent-web::before { content: '\f409'; /* `home` genericon gylph */ }
-.link-wppresent-github::before { content: '\f200'; /* GitHub logo genericon gylph */ }
-.link-wppresent-review::before { content: '\f205'; /* WordPress genericon gylph */ }
+.link-ftf-forum::before { content: '\f108'; /* `chat` genericon gylph */ }
+.link-ftf-web::before { content: '\f409'; /* `home` genericon gylph */ }
+.link-ftf-github::before { content: '\f200'; /* GitHub logo genericon gylph */ }
+.link-ftf-review::before { content: '\f205'; /* WordPress genericon gylph */ }
