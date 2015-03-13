@@ -8,7 +8,9 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
  * Escape the GUID with XML
- * @ticket 31080
+ *
+ * Acts on changeset 31726
+ * https://core.trac.wordpress.org/changeset/31726
  */
 remove_filter( 'the_guid', 'esc_url' );
 function html_escape_the_guid( $guid ) {
