@@ -164,6 +164,7 @@ class Finely_Tuned_Feeds_Admin {
 									<li><a class="link-bpaf-forum" href="http://wordpress.org/support/plugin/bp-automatic-friends" target="_blank"><?php _e( 'Support Forums', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
 									<li><a class="link-bpaf-github" href="https://github.com/stevenkword/Finely-Tuned-Feeds" target="_blank"><?php _e( 'GitHub Project', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
 									<li><a class="link-bpaf-review" href="http://wordpress.org/support/view/plugin-reviews/bp-automatic-friends" target="_blank"><?php _e( 'Review on WordPress.org', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
+									<li><a href="mailto:steven@wpengine.com?Subject=Finely%20Tuned%20%Feeds" target="_blank">Contact the Maintainer</a></li>
 								</ul>
 							</div>
 						</div>
