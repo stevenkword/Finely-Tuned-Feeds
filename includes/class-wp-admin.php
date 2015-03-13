@@ -146,6 +146,18 @@ class Finely_Tuned_Feeds_Admin {
 						</div>
 						-->
 						<div id="Finely_Tuned_Feeds_display_contact" class="postbox ">
+							<h3 class="hndle"><span><?php _e( 'Legend', Finely_Tuned_Feeds::TEXT_DOMAIN );?></span></h3>
+							<div class="inside">
+								<ul class="bpaf-contact-links">
+									<li>💗 <em>recommended</em></li>
+									<li>🔥 <em>the hotness</em></li>
+									<li>🍺 <em>beer was involved</em></li>
+									<li>🐢 <em>liked by turtles</em></li>
+								</ul>
+							</div>
+						</div>
+
+						<div id="Finely_Tuned_Feeds_display_contact" class="postbox ">
 							<h3 class="hndle"><span><?php _e( 'Support', Finely_Tuned_Feeds::TEXT_DOMAIN );?></span></h3>
 							<div class="inside">
 								<ul class="bpaf-contact-links">
@@ -155,6 +167,7 @@ class Finely_Tuned_Feeds_Admin {
 								</ul>
 							</div>
 						</div>
+
 					</div>
 				</div>
 				<div id="post-body-content">
@@ -170,7 +183,7 @@ class Finely_Tuned_Feeds_Admin {
 							<th scope="row"><label for="wp_cache_status">GUID escaping method:</label></th>
 							<td>
 								<fieldset>
-								<label><input type="radio" name="ftf_esc_method_guid" value="1" checked="checked">Escape as URL <em>(Default)</em></label><br>
+								<label><input type="radio" name="ftf_esc_method_guid" value="1" checked="checked">Escape as URL 🐢<em>(Default)</em></label><br>
 
 								<label><input type="radio" name="ftf_esc_method_guid" value="0">Escape as HTML 💗</label><br>
 
@@ -214,18 +227,15 @@ class Finely_Tuned_Feeds_Admin {
 							<th scope="row"><label for="wp_cache_status">Replace RSS2 Template:</label></th>
 							<td>
 								<fieldset>
-								<label><input type="radio" name="ftf_template_rs2" value="1" checked="checked">no <em>(Default)</em></label><br>
+								<label><input type="radio" name="ftf_template_rs2" value="1" checked="checked">no 💗<em>(Default)</em></label><br>
 
-								<label><input type="radio" name="ftf_template_rs2" value="0">yes 💗🔥</label><br>
+								<label><input type="radio" name="ftf_template_rs2" value="0">yes 🔥</label><br>
 
 								</fieldset>
 							</td>
 						</tr>
 						</tbody>
 					</table>
-
-					<p>💗 <em>denotes the plugin author's recommendation</em></p>
-					<p>🔥 <em>denotes the hotness</em></p>
 				</div>
 			</div>
 		</div><!--/.wrap-->
