@@ -147,7 +147,7 @@ class Finely_Tuned_Feeds_Admin {
 						<div id="Finely_Tuned_Feeds_display_contact" class="postbox ">
 							<h3 class="hndle"><span><?php _e( 'Legend', Finely_Tuned_Feeds::TEXT_DOMAIN );?></span></h3>
 							<div class="inside">
-								<ul class="bpaf-contact-links">
+								<ul class="ftf-contact-links">
 									<li>💗 Recommended</li>
 									<li>🔥 The hotness (experimental)</li>
 									<li>🐢 WordPress Core functionality</li>
@@ -160,10 +160,10 @@ class Finely_Tuned_Feeds_Admin {
 						<div id="Finely_Tuned_Feeds_display_contact" class="postbox ">
 							<h3 class="hndle"><span><?php _e( 'Support', Finely_Tuned_Feeds::TEXT_DOMAIN );?></span></h3>
 							<div class="inside">
-								<ul class="bpaf-contact-links">
-									<li><a class="link-bpaf-forum" href="http://wordpress.org/support/plugin/bp-automatic-friends" target="_blank"><?php _e( 'Support Forums', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
-									<li><a class="link-bpaf-github" href="https://github.com/stevenkword/Finely-Tuned-Feeds" target="_blank"><?php _e( 'GitHub Project', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
-									<li><a class="link-bpaf-review" href="http://wordpress.org/support/view/plugin-reviews/bp-automatic-friends" target="_blank"><?php _e( 'Review on WordPress.org', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
+								<ul class="ftf-contact-links">
+									<li><a class="link-ftf-forum" href="http://wordpress.org/support/plugin/bp-automatic-friends" target="_blank"><?php _e( 'Support Forums', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
+									<li><a class="link-ftf-github" href="https://github.com/stevenkword/Finely-Tuned-Feeds" target="_blank"><?php _e( 'GitHub Project', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
+									<li><a class="link-ftf-review" href="http://wordpress.org/support/view/plugin-reviews/bp-automatic-friends" target="_blank"><?php _e( 'Review on WordPress.org', Finely_Tuned_Feeds::TEXT_DOMAIN );?></a></li>
 									<li><a href="mailto:steven@wpengine.com?Subject=Finely%20Tuned%20%Feeds" target="_blank">Contact the Maintainer</a></li>
 								</ul>
 							</div>
