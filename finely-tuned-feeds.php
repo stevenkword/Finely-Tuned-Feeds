@@ -44,6 +44,12 @@ class Finely_Tuned_Feeds {
 		// Functions
 		require_once( plugin_dir_path( __FILE__ ) . 'includes/functions.php' );
 
+		// WP Admin functions
+		if( is_admin() ) {
+			require_once( plugin_dir_path( __FILE__ ) . 'includes/class-admin.php' );
+		}
+
+
 		// Templates
 		//remove_all_actions( 'do_feed_rss2' );
 
