@@ -13,7 +13,8 @@
 .link-ftf-forum::before,
 .link-ftf-web::before,
 .link-ftf-github::before,
-.link-ftf-review::before {
+.link-ftf-review::before,
+.link-ftf-contact::before {
     display: inline-block;
     -webkit-font-smoothing: antialiased;
     font: normal 1.5em/1 'Genericons';
