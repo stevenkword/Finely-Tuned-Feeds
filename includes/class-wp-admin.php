@@ -11,7 +11,7 @@
  * @subpackage Admin
  */
 
-namespace WPEngine;
+namespace Finely_Tuned_Feeds;
 
 /**
  * BuddPress Automatic Friends Admin

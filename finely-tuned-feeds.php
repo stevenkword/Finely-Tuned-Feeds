@@ -10,7 +10,7 @@ Text Domain: finely-tuned-feeds
 Domain Path: /languages
 */
 
-namespace WPEngine;
+namespace Finely_Tuned_Feeds;
 
 // Exit if this file is directly accessed
 if ( ! defined( 'ABSPATH' ) ) exit;
