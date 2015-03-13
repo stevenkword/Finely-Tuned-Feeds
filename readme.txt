@@ -13,4 +13,4 @@ Feed 💗 ( Valid and Well-formed XML for WordPress )
 
 Valid and Well-formed XML for WordPress
 
-* Acts Core Changeset 31726 and hooks 'esc_xml' into 'the_guid' filter
+* Acts on Core Changeset 31726 and hooks 'esc_xml' into 'the_guid' filter
