@@ -118,6 +118,8 @@ class Finely_Tuned_Feeds_Admin {
 	 * @return null
 	 */
 	function settings_page() {
+		// Get active tab
+		$active_tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : 'escaping';
 		?>
 		<div class="wrap">
 			<?php //screen_icon(); ?>
@@ -156,11 +158,9 @@ class Finely_Tuned_Feeds_Admin {
 
 					<p>Valid and Well-formed XML for WordPress</p>
 
-					<?php $active_tab = 'escaping'; ?>
-
 					<h2 class="nav-tab-wrapper" style="padding: 0;">
 						<a href="#" class="nav-tab <?php echo $active_tab == 'escaping' ? 'nav-tab-active' : ''; ?>">Escaping</a>
-						<a href="#" class="nav-tab <?php echo $active_tab == 'strip-tags' ? 'nav-tab-active' : ''; ?>">Strip Tags</a>
+						<a href="#" class="nav-tab <?php echo $active_tab == 'striptags' ? 'nav-tab-active' : ''; ?>">Strip Tags</a>
 						<a href="#" class="nav-tab <?php echo $active_tab == 'templates' ? 'nav-tab-active' : ''; ?>">Templates</a>
 						<a href="#" class="nav-tab <?php echo $active_tab == 'about' ? 'nav-tab-active' : ''; ?>">About</a>
 					</h2>
@@ -170,10 +170,16 @@ class Finely_Tuned_Feeds_Admin {
 						if( $active_tab == 'escaping' ) {
 							self::display_escaping_tab();
 							submit_button();
+						} elseif( $active_tab == 'striptags' ) {
+							self::display_striptags_tab();
+							submit_button();
+						} elseif( $active_tab == 'templates' ) {
+							self::display_templates_tab();
+							submit_button();
 						} elseif( $active_tab == 'about' ) {
 							self::display_about_tab();
 						} else {
-							self::display_general_options();
+							self::display_escaping_tab();
 							submit_button();
 						} // end if/else
 						?>
