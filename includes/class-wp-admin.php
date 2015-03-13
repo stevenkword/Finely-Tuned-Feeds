@@ -157,12 +157,11 @@ class Finely_Tuned_Feeds_Admin {
 				<div id="post-body-content">
 
 					<p>Valid and Well-formed XML for WordPress</p>
-
 					<h2 class="nav-tab-wrapper" style="padding: 0;">
-						<a href="#" class="nav-tab <?php echo $active_tab == 'escaping' ? 'nav-tab-active' : ''; ?>">Escaping</a>
-						<a href="#" class="nav-tab <?php echo $active_tab == 'striptags' ? 'nav-tab-active' : ''; ?>">Strip Tags</a>
-						<a href="#" class="nav-tab <?php echo $active_tab == 'templates' ? 'nav-tab-active' : ''; ?>">Templates</a>
-						<a href="#" class="nav-tab <?php echo $active_tab == 'about' ? 'nav-tab-active' : ''; ?>">About</a>
+						<a href="<?php echo admin_url( 'options-general.php?page=finely-tuned-feeds-settings&tab=escaping' );?>" class="nav-tab <?php echo $active_tab == 'escaping' ? 'nav-tab-active' : ''; ?>">Escaping</a>
+						<a href="<?php echo admin_url( 'options-general.php?page=finely-tuned-feeds-settings&tab=striptags' );?>" class="nav-tab <?php echo $active_tab == 'striptags' ? 'nav-tab-active' : ''; ?>">Strip Tags</a>
+						<a href="<?php echo admin_url( 'options-general.php?page=finely-tuned-feeds-settings&tab=templates' );?>" class="nav-tab <?php echo $active_tab == 'templates' ? 'nav-tab-active' : ''; ?>">Templates</a>
+						<a href="<?php echo admin_url( 'options-general.php?page=finely-tuned-feeds-settings&tab=about' );?>" class="nav-tab <?php echo $active_tab == 'about' ? 'nav-tab-active' : ''; ?>">About</a>
 					</h2>
 
 					<form method="post" action="options.php">
@@ -172,7 +171,7 @@ class Finely_Tuned_Feeds_Admin {
 							submit_button();
 						} elseif( $active_tab == 'striptags' ) {
 							self::display_striptags_tab();
-							submit_button();
+							//submit_button();
 						} elseif( $active_tab == 'templates' ) {
 							self::display_templates_tab();
 							submit_button();
@@ -230,6 +229,10 @@ class Finely_Tuned_Feeds_Admin {
 		update_usermeta( $user_id, Finely_Tuned_Feeds::METAKEY, $meta_value );
 	}
 
+	/**
+	 * [display_escaping_tab description]
+	 * @return [type] [description]
+	 */
 	function display_escaping_tab(){
 		?>
 		<h2 class="title">RSS Escaping Methods</h2>
@@ -287,6 +290,18 @@ class Finely_Tuned_Feeds_Admin {
 		<?php
 	}
 
+	/**
+	 * [display_escaping_tab description]
+	 * @return [type] [description]
+	 */
+	function display_striptags_tab(){
+		echo '@todo';
+	}
+
+	/**
+	 * [display_templates_tab description]
+	 * @return [type] [description]
+	 */
 	function display_templates_tab(){
 		?>
 		<h2 class="title">Template Overrides</h2>
@@ -310,6 +325,10 @@ class Finely_Tuned_Feeds_Admin {
 		<?php
 	}
 
+	/**
+	 * [display_about_tab description]
+	 * @return [type] [description]
+	 */
 	function display_about_tab(){
 		//Get plugin path
 		$plugin_path = dirname( dirname( __FILE__ ) );
