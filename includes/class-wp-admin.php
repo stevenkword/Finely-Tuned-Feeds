@@ -251,9 +251,9 @@ class Finely_Tuned_Feeds_Admin {
 				<th scope="row"><label for="wp_cache_status">GUID escaping method:</label></th>
 				<td>
 					<fieldset>
-					<label><input type="radio" name="ftf_esc_method_guid" value="esc_url" checked="checked">Escape as URL 🐢<em>(default)</em></label><br>
+					<label><input type="radio" name="ftf_esc_method_guid" value="esc_url">Escape as URL 🐢</label><br>
 
-					<label><input type="radio" name="ftf_esc_method_guid" value="esc_html">Escape as HTML 💗</label><br>
+					<label><input type="radio" name="ftf_esc_method_guid" value="esc_html" checked="checked">Escape as HTML 💗<em>(default)</em></label><br>
 
 					<label><input type="radio" name="ftf_esc_method_guid" value="esc_xml">Escape as XML 🔥</label><br>
 
