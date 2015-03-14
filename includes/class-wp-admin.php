@@ -342,9 +342,9 @@ class Finely_Tuned_Feeds_Admin {
 				<th scope="row"><label for="wp_cache_status">Replace RSS2 Template:</label></th>
 				<td>
 					<fieldset>
-					<label><input type="radio" name="ftf_template_rs2" value="1" checked="checked">no 💗🐢<em>(default)</em></label><br>
+					<label><input type="radio" name="ftf_template_rs2" value="1" checked="checked">No 💗🐢<em>(default)</em></label><br>
 
-					<label><input type="radio" name="ftf_template_rs2" value="0">yes 🔥💣</label><br>
+					<label><input type="radio" name="ftf_template_rs2" value="0">Yes 🔥💣</label><br>
 
 					</fieldset>
 				</td>
