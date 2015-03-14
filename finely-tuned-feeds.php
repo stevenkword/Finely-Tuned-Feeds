@@ -25,6 +25,7 @@ class Finely_Tuned_Feeds {
 	const NONCE          = 'finely_tuned_feeds_nonce';
 	const NONCE_FAIL_MSG = 'Cheatin&#8217; huh?';
 	const TEXT_DOMAIN    = 'finely-tuned-feeds';
+	const TAGLINE        = 'Feed 💗 via valid and well-formed XML for WordPress';
 
 	/**
 	 * Register singleton

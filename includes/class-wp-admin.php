@@ -163,7 +163,7 @@ class Finely_Tuned_Feeds_Admin {
 				</div>
 				<div id="post-body-content">
 
-					<p>Feed 💗 via valid and well-formed XML for WordPress</p>
+					<p><?php echo Finely_Tuned_Feeds::TAGLINE; ?></p>
 					<h2 class="nav-tab-wrapper" style="padding: 0;">
 						<a href="<?php echo admin_url( 'options-general.php?page=finely-tuned-feeds-settings&tab=escaping' );?>" class="nav-tab <?php echo $active_tab == 'escaping' ? 'nav-tab-active' : ''; ?>">Escaping</a>
 						<a href="<?php echo admin_url( 'options-general.php?page=finely-tuned-feeds-settings&tab=striptags' );?>" class="nav-tab <?php echo $active_tab == 'striptags' ? 'nav-tab-active' : ''; ?>">Strip Tags</a>
