@@ -2,7 +2,7 @@
 /*
 Plugin Name: Finely Tuned Feeds
 Version: 0.1-alpha
-Description: Feed 💗 ( Valid and Well-formed XML for WordPress )
+Description: Feed 💗 via valid and well-formed XML for WordPress
 Author: Steven Word
 Author URI: http://www.stevenword.com
 Plugin URI: https://github.com/stevenkword/Finely-Tuned-Feeds

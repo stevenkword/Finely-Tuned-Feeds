@@ -7,10 +7,10 @@ Stable tag: 4.2.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Feed 💗 ( Valid and Well-formed XML for WordPress )
+Feed 💗 via valid and well-formed XML for WordPress
 
 == Description ==
 
-Valid and Well-formed XML for WordPress
+Valid and well-formed XML for WordPress
 
 * Acts on Core Changeset 31726 and hooks 'esc_xml' into 'the_guid' filter
