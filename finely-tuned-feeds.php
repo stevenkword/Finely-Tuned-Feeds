@@ -141,8 +141,8 @@ class Finely_Tuned_Feeds {
 		 * Strip Tags for the Title RSS
 		 * @var [type]
 		 */
-		$option_striptags_the_title_rss = get_option( 'ftf_option_striptags_the_title_rss', false );
-		if( true === $option_striptags_the_title_rss ) {
+		$option_striptags_the_title_rss = get_option( 'ftf_option_striptags_the_title_rss', true );
+		if( false === $option_striptags_the_title_rss ) {
 			/**
 			 * 9993 - Remove strip tags filter
 			 */
