@@ -56,11 +56,99 @@ class Finely_Tuned_Feeds {
 			require_once( plugin_dir_path( __FILE__ ) . 'includes/class-wp-admin.php' );
 		}
 
+		// Apply the filters based on options
+		self::apply_filters();
 
 		// Templates
 		//remove_all_actions( 'do_feed_rss2' );
 
 		//add_action( 'do_feed_rss2', array( self::instance(), 'load_template_rss2' ), 10, 1 );
+
+	}
+
+	function apply_filters(){
+
+		/**
+		 * Escape the GUID
+		 * @var [type]
+		 */
+		$option_esc_the_guid = get_option( 'ftf_esc_the_guid', 'esc_url' );
+		//var_dump( $option_esc_the_guid );
+		if( 'esc_html' == $option_esc_the_guid ) {
+			remove_filter( 'the_guid', 'esc_url' );
+			add_filter( 'the_guid', 'esc_html' );
+		} elseif( 'esc_xml' == $option_esc_the_guid ) {
+			remove_filter( 'the_guid', 'esc_url' );
+			add_filter( 'the_guid', 'xml_escape_the_guid' );
+		}
+
+		/**
+		 * Escape the Title RSS
+		 * @var [type]
+		 */
+		$option_esc_the_title_rss = get_option( 'ftf_option_esc_the_title_rss', 'esc_html' );
+		if( 'esc_xml' == $option_esc_the_title_rss ) {
+			/**
+			 * Replace Core Title RSS Filters using `esc_html` with `esc_xml`
+			 *
+			 * This replaces the escaping method used by core with the
+			 * `esc_xml()` method found in this plugin.
+			 */
+			remove_filter( 'the_title_rss', 'esc_html' );
+			add_filter( 'the_title_rss', 'esc_xml' );
+		}
+
+		/**
+		 * Escape the Title RSS
+		 * @var [type]
+		 */
+		$option_esc_comment_text_rss = get_option( 'ftf_option_esc_comment_text_rss', 'esc_html' );
+		if( 'esc_xml' == $option_esc_comment_text_rss ) {
+			/**
+			 * Replace Core Comments RSS Filters using `esc_html` with `esc_xml`
+			 *
+			 * This replaces the escaping method used by core with the
+			 * `esc_xml()` method found in this plugin.
+			 */
+			remove_filter( 'comment_text_rss', 'esc_html' );
+			add_filter( 'comment_text_rss', 'esc_xml' );
+		}
+
+		/**
+		 * Reverse Escaping Order
+		 */
+		if( 2 === 1 ) {
+			/**
+			 * 28816 - Wow! This fixes most things
+			 *
+			 * https://core.trac.wordpress.org/attachment/ticket/28816/order.patch
+			 */
+			add_filter( 'the_title_rss', 'esc_xml', 10 );
+			add_filter( 'the_title_rss', 'ent2ncr', 11 );
+		}
+
+		/**
+		 *
+		 */
+		if( 2 === 1 ) {
+			//add_filter( 'esc_xml', 'strip_for_xml' );
+			//add_filter( 'esc_xml', 'patch_31190' );
+			//add_filter( 'esc_xml', 'strip_non_xml_entities' );
+		}
+
+
+		/**
+		 * Strip Tags for the Title RSS
+		 * @var [type]
+		 */
+		$option_striptags_the_title_rss = get_option( 'ftf_option_striptags_the_title_rss', false );
+		if( true === $option_striptags_the_title_rss ) {
+			/**
+			 * 9993 - Remove strip tags filter
+			 */
+			remove_filter( 'the_title_rss', 'strip_tags' );
+		}
+
 
 	}
 
