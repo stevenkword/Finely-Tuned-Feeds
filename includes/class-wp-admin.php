@@ -162,7 +162,7 @@ class Finely_Tuned_Feeds_Admin {
 					</div>
 				</div>
 				<div id="post-body-content">
-
+					<?php settings_errors(); ?>
 					<p><?php echo Finely_Tuned_Feeds::TAGLINE; ?></p>
 					<h2 class="nav-tab-wrapper" style="padding: 0;">
 						<a href="<?php echo admin_url( 'options-general.php?page=finely-tuned-feeds-settings&tab=escaping' );?>" class="nav-tab <?php echo $active_tab == 'escaping' ? 'nav-tab-active' : ''; ?>">Escaping</a>
@@ -172,6 +172,13 @@ class Finely_Tuned_Feeds_Admin {
 					</h2>
 
 					<form method="post" action="options.php">
+
+<?php settings_fields( 'sandbox_theme_display_options' ); ?>
+<?php do_settings_sections( 'sandbox_theme_display_options' ); ?>
+
+<?php settings_fields( 'sandbox_theme_social_options' ); ?>
+<?php do_settings_sections( 'sandbox_theme_social_options' ); ?>
+
 						<?php
 						if( $active_tab == 'escaping' ) {
 							self::display_escaping_tab();
