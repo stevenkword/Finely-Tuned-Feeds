@@ -52,14 +52,24 @@ class Tests_Finely_Tuned_Feeds extends WP_UnitTestCase {
 	}
 
 	/**
-	 * https://core.trac.wordpress.org/ticket/9993
+	 * Test individual HTML entities encoding in the_title_rss
+	 *
+	 * @ticket 9993
 	 * @return [type] [description]
 	 */
-	function test_ticket_9993() {
-		$actual = apply_filters( 'the_title_rss', '& > test <' );
-		$expected = '&amp; &gt; test &lt;';
+	function test_entity_encoding_rss_lone_entities() {
+		$actual = apply_filters( 'the_title_rss', '& > " test < \'' );
+		$expected = '&amp; &gt; &quot; test &lt; &#039;';
 		$this->assertEquals( $expected, $actual );
+	}
 
+	/**
+	 * Test XML tag entities encoding in the_title_rss
+	 *
+	 * @ticket 9993
+	 * @return [type] [description]
+	 */
+	function test_entity_encoding_rss_xml_tags() {
 		$actual = apply_filters( 'the_title_rss', '<test>This is a test</test>' );
 		$expected = '&lt;test&gt;This is a test&lt;/test&gt;';
 		$this->assertEquals( $expected, $actual );
