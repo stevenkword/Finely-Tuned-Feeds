@@ -57,7 +57,7 @@ class Finely_Tuned_Feeds {
 		}
 
 		// Apply the filters based on options
-		self::apply_filters();
+		self::manage_filters();
 
 		// Replace Templates
 		//remove_all_actions( 'do_feed_rss2' );
@@ -65,7 +65,7 @@ class Finely_Tuned_Feeds {
 
 	}
 
-	public static function apply_filters(){
+	public static function manage_filters(){
 
 		/**
 		 * Escape the GUID
