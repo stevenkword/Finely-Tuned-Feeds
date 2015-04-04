@@ -65,6 +65,11 @@ class Finely_Tuned_Feeds {
 
 	}
 
+	/**
+	 * Adds and Removes filters
+	 *
+	 * @return [type] [description]
+	 */
 	public static function manage_filters(){
 
 		/**
