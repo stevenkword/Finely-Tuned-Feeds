@@ -59,9 +59,8 @@ class Finely_Tuned_Feeds {
 		// Apply the filters based on options
 		self::apply_filters();
 
-		// Templates
+		// Replace Templates
 		//remove_all_actions( 'do_feed_rss2' );
-
 		//add_action( 'do_feed_rss2', array( self::instance(), 'load_template_rss2' ), 10, 1 );
 
 	}
@@ -72,7 +71,7 @@ class Finely_Tuned_Feeds {
 		 * Escape the GUID
 		 * @var [type]
 		 */
-		$option_esc_the_guid = get_option( 'ftf_esc_the_guid', 'esc_url' );
+		$option_esc_the_guid = get_option( 'ftf_option_esc_the_guid', 'esc_url' );
 		//$option_esc_the_guid = 'esc_xml';
 
 		//var_dump( $option_esc_the_guid );
