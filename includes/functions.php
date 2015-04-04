@@ -1,5 +1,7 @@
 <?php
 
+namespace Finely_Tuned_Feeds;
+
 // Exit if this file is directly accessed
 if ( ! defined( 'ABSPATH' ) ) exit;
 
