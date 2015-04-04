@@ -13,5 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * https://core.trac.wordpress.org/changeset/31726
  */
 function xml_escape_the_guid( $guid ) {
+	global $wp_query;
+	return $wp_query->is_author();
 	return esc_xml( $guid );
 }

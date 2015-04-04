@@ -66,13 +66,15 @@ class Finely_Tuned_Feeds {
 
 	}
 
-	function apply_filters(){
+	public static function apply_filters(){
 
 		/**
 		 * Escape the GUID
 		 * @var [type]
 		 */
 		$option_esc_the_guid = get_option( 'ftf_esc_the_guid', 'esc_url' );
+		//$option_esc_the_guid = 'esc_xml';
+
 		//var_dump( $option_esc_the_guid );
 		if( 'esc_html' == $option_esc_the_guid ) {
 			remove_filter( 'the_guid', 'esc_url' );
@@ -128,9 +130,18 @@ class Finely_Tuned_Feeds {
 		}
 
 		/**
-		 *
+		 * Replace HTML escaping with XML escaping
 		 */
 		if( 2 === 1 ) {
+			/*
+			global $wp_filter;
+			echo '<pre>';
+				var_dump( $wp_filter['the_excerpt_rss'] );
+				var_dump( $wp_filter['the_content_feed'] );
+				var_dump( $wp_filter['the_content'] );
+			echo '</pre>';
+			die('asdf');
+			*/
 			//add_filter( 'esc_xml', 'strip_for_xml' );
 			//add_filter( 'esc_xml', 'patch_31190' );
 			//add_filter( 'esc_xml', 'strip_non_xml_entities' );
@@ -149,6 +160,13 @@ class Finely_Tuned_Feeds {
 			remove_filter( 'the_title_rss', 'strip_tags' );
 		}
 
+		/**
+		 * Strip Control Characters from the Excerpt
+		 * @ticket 29187, 19998
+		 */
+		if( 1 === 1 ) {
+			add_filter( 'the_excerpt_rss', 'strip_for_xml' );
+		}
 
 	}
 
