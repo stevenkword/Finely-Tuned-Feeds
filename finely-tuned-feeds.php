@@ -60,8 +60,8 @@ class Finely_Tuned_Feeds {
 		self::manage_filters();
 
 		// Replace Templates
-		//remove_all_actions( 'do_feed_rss2' );
-		//add_action( 'do_feed_rss2', array( self::instance(), 'load_template_rss2' ), 10, 1 );
+		remove_all_actions( 'do_feed_rss2' );
+		add_action( 'do_feed_rss2', array( self::instance(), 'load_template_rss2' ), 10, 1 );
 
 	}
 

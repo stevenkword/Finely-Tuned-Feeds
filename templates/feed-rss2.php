@@ -5,6 +5,8 @@
  * @package WordPress
  */
 
+namespace Finely_Tuned_Feeds;
+
 header('Content-Type: ' . feed_content_type('rss-http') . '; charset=' . get_option('blog_charset'), true);
 $more = 1;
 
@@ -43,6 +45,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 	<link><?php bloginfo_rss('url') ?></link>
 	<description><?php bloginfo_rss("description") ?></description>
 	<lastBuildDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false); ?></lastBuildDate>
+	<lastBuildDate2><?php echo last_build_date(); ?></lastBuildDate2>
 	<language><?php bloginfo_rss( 'language' ); ?></language>
 	<sy:updatePeriod><?php
 		$duration = 'hourly';

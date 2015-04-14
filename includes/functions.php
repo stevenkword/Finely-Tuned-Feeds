@@ -5,6 +5,22 @@ namespace Finely_Tuned_Feeds;
 // Exit if this file is directly accessed
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+
+function last_build_date( ){
+
+	global $wp_query;
+
+	$queried_object = get_queried_object();
+
+	if( is_object( $queried_object ) && ! is_wp_error( $queried_object ) ) {
+		$term_id = $queried_object->term_id;
+		$hash = md5( maybe_serialize( $queried_object ) );
+		return $term_id;
+	}
+	// Core Default
+	return mysql2date('D, d M Y H:i:s +0000', get_post_time('Y-m-d H:i:s', true), false);
+}
+
 /**
  * Removes otherwise valid utf8 characters that break XML output.
  *
