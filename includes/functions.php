@@ -7,18 +7,18 @@ if ( ! defined( 'ABSPATH' ) ) exit;
 
 
 
-function last_build_date(){
-	//return 'test';
+function get_feed_last_build_date(){
 	global $wp_query;
 
 	$post_times = array();
-
 	if( 0 < $wp_query->post_count ) {
 		foreach( $wp_query->posts as $post ) {
 			$post_times[] = get_post_modified_time( 'U', true, $post->ID );
 		}
-		return date('D, d M Y H:i:s +0000', max( $post_times ) );
+		return max( $post_times );
 	}
+	// Fallback
+	return get_lastpostmodified('GMT');
 }
 
 /**
