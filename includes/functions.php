@@ -10,12 +10,35 @@ function last_build_date( ){
 
 	global $wp_query;
 
+	$meta_key_last_build_date      = 'ftf_last_build_date';
+	$meta_key_last_build_date_hash = 'ftf_last_build_date_hash';
+
 	$queried_object = get_queried_object();
 
 	if( is_object( $queried_object ) && ! is_wp_error( $queried_object ) ) {
-		$term_id = $queried_object->term_id;
-		$hash = md5( maybe_serialize( $queried_object ) );
-		return $term_id;
+
+		$hash = md5( maybe_serialize( $wp_query ) );
+
+		if( $wp_query->is_category || $wp_query->is_tag ) {
+			$term_id = $queried_object->term_id;
+
+			//add_metadata( $meta_type, $object_id, $meta_key, $meta_value, $unique );
+
+			return $term_id;
+		} elseif( $wp_query->is_author ) {
+
+			$author_id = $queried_object->ID;
+			$existing_hash = get_metadata( 'user', $author_id, $meta_key_last_build_date_hash, true );
+
+			if( $hash != $existing_hash ) {
+				update_metadata( 'user', $author_id, $meta_key_last_build_date, mysql2date('D, d M Y H:i:s +0000', current_time('timestamp'), true) );
+				update_metadata( 'user', $author_id, $meta_key_last_build_date_hash, $hash );
+			}
+			return get_metadata( 'user', $author_id, $meta_key_last_build_date, true );
+		}
+
+
+
 	}
 	// Core Default
 	return mysql2date('D, d M Y H:i:s +0000', get_post_time('Y-m-d H:i:s', true), false);
