@@ -45,6 +45,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 	<link><?php bloginfo_rss('url') ?></link>
 	<description><?php bloginfo_rss("description") ?></description>
 	<lastBuildDate><?php echo date( 'D, d M Y H:i:s +0000', get_feed_last_build_date() ); ?></lastBuildDate>
+	<lastBuildDateAlt><?php echo date( 'D, d M Y H:i:s +0000', get_feed_last_build_date_alt() ); ?></lastBuildDateAlt>
 	<language><?php bloginfo_rss( 'language' ); ?></language>
 	<sy:updatePeriod><?php
 		$duration = 'hourly';
