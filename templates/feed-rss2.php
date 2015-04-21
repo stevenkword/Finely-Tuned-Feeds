@@ -45,8 +45,7 @@ do_action( 'rss_tag_pre', 'rss2' );
 	<link><?php bloginfo_rss('url') ?></link>
 	<description><?php bloginfo_rss("description") ?></description>
 	<lastBuildDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false ); ?></lastBuildDate>
-	<lastBuildDate2><?php echo mysql2date( 'D, d M Y H:i:s +0000', get_feed_last_build_date(), false ); ?></lastBuildDate2>
-	<lastBuildDateAlt><?php echo mysql2date( 'D, d M Y H:i:s +0000', get_feed_last_build_date_alt(), false ); ?></lastBuildDateAlt>
+	<lastBuildDateFeed><?php echo mysql2date( 'D, d M Y H:i:s +0000', get_last_build_date_feed(), false ); ?></lastBuildDateFeed>
 	<language><?php bloginfo_rss( 'language' ); ?></language>
 	<sy:updatePeriod><?php
 		$duration = 'hourly';

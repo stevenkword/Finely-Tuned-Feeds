@@ -28,7 +28,7 @@ function get_feed_last_build_date(){
  *
  * @return [type] [description]
  */
-function get_feed_last_build_date_alt() {
+function get_last_build_date_feed() {
 	global $wp_query, $wpdb;
 
 	if ( $wp_query->have_posts() ) {
@@ -36,16 +36,20 @@ function get_feed_last_build_date_alt() {
 		foreach( $wp_query->posts as $post ) {
 			$post_ids[] = $post->ID;
 		}
+		$postids = implode( "','", $post_ids );
 
-		if( 0 < count( $post_ids ) ) {
-			$postids = implode( ",", $post_ids );
+		if( $wp_query->is_comment_feed() ) {
+			$comment_times = $wpdb->get_col( "SELECT $wpdb->comments.comment_date_gmt FROM $wpdb->comments WHERE $wpdb->comments.comment_post_ID IN ('$postids')" );
+
+			return( max( $comment_times ) );
+
+		} else {
 			$modified_times = $wpdb->get_col( "SELECT $wpdb->posts.post_modified_gmt FROM $wpdb->posts WHERE $wpdb->posts.ID IN ('$postids')" );
 			return max( $modified_times );
 		}
 	}
 
-	// Fallback to last modified blog post
-	//return 'Fallback';
+	// Fallback to last time any post was modified or published.
 	return get_lastpostmodified( 'GMT' );
 }
 
