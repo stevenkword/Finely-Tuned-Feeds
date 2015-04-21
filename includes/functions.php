@@ -26,28 +26,14 @@ function get_feed_last_build_date(){
 function get_feed_last_build_date_alt(){
 	global $wp_query, $wpdb;
 
-//post_modified_gmt
 	$post_ids = array();
 	foreach( $wp_query->posts as $post ) {
 		$post_ids[] = $post->ID;
 	}
 
-	$query = "SELECT $wpdb->posts.post_modified_gmt FROM $wpdb->posts WHERE $wpdb->posts.ID IN (" . implode(",", $post_ids) . ") ORDER BY post_date DESC";
+	$modified_times = $wpdb->get_col( "SELECT $wpdb->posts.post_modified_gmt FROM $wpdb->posts WHERE $wpdb->posts.ID IN (" . implode(",", $post_ids) . ") ORDER BY post_date DESC" );
 
-	$results = $wpdb->get_results( $query );
-
-	//var_dump( $results );
-	//var_dump( $query );
-
-	$times = array();
-	foreach( $results as $result ) {
-		$times[] = $result->post_modified_gmt;
-	}
-
-	//var_dump( $times );
-
-	// get_date_from_gmt
-	return strtotime( max( $times ) );
+	return strtotime( max( $modified_times ) );
 
 	return 'Fallback';
 
