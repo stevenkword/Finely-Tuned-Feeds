@@ -5,23 +5,6 @@ namespace Finely_Tuned_Feeds;
 // Exit if this file is directly accessed
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-
-// lastBuildDate	The last time the content of the channel changed.	Sat, 07 Sep 2002 09:42:31 GMT
-function get_feed_last_build_date(){
-	global $wp_query;
-
-	$post_timestamps = array();
-	if( 0 < $wp_query->post_count ) {
-		foreach( $wp_query->posts as $post ) {
-			$post_timestamps[] = get_post_modified_time( 'Y-m-d H:i:s', true, $post->ID ); // In seconds since the Unix Epoch GMT
-		}
-		// get_date_from_gmt
-		return max( $post_timestamps );
-	}
-	// Fallback
-	return get_lastpostmodified( 'GMT' );
-}
-
 /**
  * Get the timestamp of the last time any post form the main query was modified or published.
  *
@@ -51,55 +34,6 @@ function get_last_build_date_feed() {
 
 	// Fallback to last time any post was modified or published.
 	return get_lastpostmodified( 'GMT' );
-}
-
-/**
- * Get the timestamp of the last time any post was modified or published.
- *
- * @since 3.1.0
- * @access private
- *
- * @param string $timezone The timezone for the timestamp. See {@see get_lastpostmodified()}
- *                         for information on accepted values.
- * @param string $field    Post field to check. Accepts 'date' or 'modified'.
- * @return string The timestamp.
- */
-function _get_last_post_time_CORE( $timezone, $field ) {
-	global $wpdb;
-
-	if ( !in_array( $field, array( 'date', 'modified' ) ) )
-		return false;
-
-	$timezone = strtolower( $timezone );
-
-	$key = "lastpost{$field}:$timezone";
-
-	$date = wp_cache_get( $key, 'timeinfo' );
-
-	if ( !$date ) {
-		$add_seconds_server = date('Z');
-
-		$post_types = get_post_types( array( 'public' => true ) );
-		array_walk( $post_types, array( &$wpdb, 'escape_by_ref' ) );
-		$post_types = "'" . implode( "', '", $post_types ) . "'";
-
-		switch ( $timezone ) {
-			case 'gmt':
-				$date = $wpdb->get_var("SELECT post_{$field}_gmt FROM $wpdb->posts WHERE post_status = 'publish' AND post_type IN ({$post_types}) ORDER BY post_{$field}_gmt DESC LIMIT 1");
-				break;
-			case 'blog':
-				$date = $wpdb->get_var("SELECT post_{$field} FROM $wpdb->posts WHERE post_status = 'publish' AND post_type IN ({$post_types}) ORDER BY post_{$field}_gmt DESC LIMIT 1");
-				break;
-			case 'server':
-				$date = $wpdb->get_var("SELECT DATE_ADD(post_{$field}_gmt, INTERVAL '$add_seconds_server' SECOND) FROM $wpdb->posts WHERE post_status = 'publish' AND post_type IN ({$post_types}) ORDER BY post_{$field}_gmt DESC LIMIT 1");
-				break;
-		}
-
-		if ( $date )
-			wp_cache_set( $key, $date, 'timeinfo' );
-	}
-
-	return $date;
 }
 
 /**
