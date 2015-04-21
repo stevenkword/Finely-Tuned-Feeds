@@ -44,8 +44,9 @@ do_action( 'rss_tag_pre', 'rss2' );
 	<atom:link href="<?php self_link(); ?>" rel="self" type="application/rss+xml" />
 	<link><?php bloginfo_rss('url') ?></link>
 	<description><?php bloginfo_rss("description") ?></description>
-	<lastBuildDate><?php echo date( 'D, d M Y H:i:s +0000', get_feed_last_build_date() ); ?></lastBuildDate>
-	<lastBuildDateAlt><?php echo date( 'D, d M Y H:i:s +0000', get_feed_last_build_date_alt() ); ?></lastBuildDateAlt>
+	<lastBuildDate><?php echo mysql2date('D, d M Y H:i:s +0000', get_lastpostmodified('GMT'), false ); ?></lastBuildDate>
+	<lastBuildDate2><?php echo mysql2date( 'D, d M Y H:i:s +0000', get_feed_last_build_date(), false ); ?></lastBuildDate2>
+	<lastBuildDateAlt><?php echo mysql2date( 'D, d M Y H:i:s +0000', get_feed_last_build_date_alt(), false ); ?></lastBuildDateAlt>
 	<language><?php bloginfo_rss( 'language' ); ?></language>
 	<sy:updatePeriod><?php
 		$duration = 'hourly';

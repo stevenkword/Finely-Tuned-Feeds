@@ -13,7 +13,7 @@ function get_feed_last_build_date(){
 	$post_timestamps = array();
 	if( 0 < $wp_query->post_count ) {
 		foreach( $wp_query->posts as $post ) {
-			$post_timestamps[] = get_post_modified_time( 'U', true, $post->ID ); // In seconds since the Unix Epoch GMT
+			$post_timestamps[] = get_post_modified_time( 'Y-m-d H:i:s', true, $post->ID ); // In seconds since the Unix Epoch GMT
 		}
 		// get_date_from_gmt
 		return max( $post_timestamps );
@@ -22,22 +22,30 @@ function get_feed_last_build_date(){
 	return get_lastpostmodified( 'GMT' );
 }
 
-// lastBuildDate	The last time the content of the channel changed.	Sat, 07 Sep 2002 09:42:31 GMT
-function get_feed_last_build_date_alt(){
+/**
+ * Get the timestamp of the last time any post form the main query was modified or published.
+ *
+ *
+ * @return [type] [description]
+ */
+function get_feed_last_build_date_alt() {
 	global $wp_query, $wpdb;
 
-	$post_ids = array();
-	foreach( $wp_query->posts as $post ) {
-		$post_ids[] = $post->ID;
+	if ( $wp_query->have_posts() ) {
+		$post_ids = array();
+		foreach( $wp_query->posts as $post ) {
+			$post_ids[] = $post->ID;
+		}
+
+		if( 0 < count( $post_ids ) ) {
+			$postids = implode( ",", $post_ids );
+			$modified_times = $wpdb->get_col( "SELECT $wpdb->posts.post_modified_gmt FROM $wpdb->posts WHERE $wpdb->posts.ID IN ('$postids')" );
+			return max( $modified_times );
+		}
 	}
 
-	$modified_times = $wpdb->get_col( "SELECT $wpdb->posts.post_modified_gmt FROM $wpdb->posts WHERE $wpdb->posts.ID IN (" . implode(",", $post_ids) . ") ORDER BY post_date DESC" );
-
-	return strtotime( max( $modified_times ) );
-
-	return 'Fallback';
-
-	// Fallback
+	// Fallback to last modified blog post
+	//return 'Fallback';
 	return get_lastpostmodified( 'GMT' );
 }
 
