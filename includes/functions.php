@@ -6,10 +6,14 @@ namespace Finely_Tuned_Feeds;
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Get the timestamp of the last time any post form the main query was modified or published.
+ * Get the timestamp of the most recently modified post from WP_Query
  *
+ * If viewing a comment feed, the date of the most recently modified
+ * comment will be returned.
  *
- * @return [type] [description]
+ * @since 4.3.0
+ *
+ * @return string Date ('Y-m-d H:i:s' for use with mysql2date() )
  */
 function get_last_build_date_feed() {
 	global $wp_query, $wpdb;
@@ -27,8 +31,8 @@ function get_last_build_date_feed() {
 			return( max( $comment_times ) );
 
 		} else {
-			$modified_times = $wpdb->get_col( "SELECT $wpdb->posts.post_modified_gmt FROM $wpdb->posts WHERE $wpdb->posts.ID IN ('$postids')" );
-			return max( $modified_times );
+			$post_times = $wpdb->get_col( "SELECT $wpdb->posts.post_modified_gmt FROM $wpdb->posts WHERE $wpdb->posts.ID IN ('$postids')" );
+			return max( $post_times );
 		}
 	}
 
