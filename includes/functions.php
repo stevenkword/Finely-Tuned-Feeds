@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @return string Date ('Y-m-d H:i:s' for use with mysql2date() )
  */
 function get_last_build_date_feed() {
-	global $wp_query, $wpdb, $wp_comment_query;
+	global $wp_query, $wpdb;
 
 	if ( $wp_query->have_posts() ) {
 		$post_ids = array();
