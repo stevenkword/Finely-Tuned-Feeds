@@ -6,7 +6,7 @@ namespace Finely_Tuned_Feeds;
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /**
- * Get the timestamp of the most recently modified post from WP_Query
+ * Get the date of the most recently modified post from WP_Query
  *
  * If viewing a comment feed, the date of the most recently modified
  * comment will be returned.
