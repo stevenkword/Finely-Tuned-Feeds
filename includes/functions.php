@@ -16,16 +16,16 @@ if ( ! defined( 'ABSPATH' ) ) exit;
  * @return string Date ('Y-m-d H:i:s' for use with mysql2date() )
  */
 function get_last_build_date_feed() {
-	global $wp_query, $wpdb;
+	global $wp_query, $wpdb, $wp_comment_query;
 
 	if ( $wp_query->have_posts() ) {
 		$post_ids = array();
 		foreach( $wp_query->posts as $post ) {
 			$post_ids[] = $post->ID;
+			$post_times[] = $post->post_modified_gmt;
 		}
 		$postids = implode( "','", $post_ids );
-
-		$max_post_time = $wpdb->get_var( $wpdb->prepare( "SELECT MAX($wpdb->posts.post_modified_gmt) FROM $wpdb->posts WHERE $wpdb->posts.ID IN ('%s')", $postids ) );
+		$max_post_time = max( $post_times );
 
 		if( $wp_query->is_comment_feed() ) {
 			$max_comment_time = $wpdb->get_var( $wpdb->prepare( "SELECT MAX($wpdb->comments.comment_date_gmt) FROM $wpdb->comments WHERE $wpdb->comments.comment_post_ID IN ('%s')", $postids ) );
