@@ -27,11 +27,11 @@ function get_last_build_date_feed() {
 
 		$max_post_time = $wpdb->get_var( "SELECT MAX($wpdb->posts.post_modified_gmt) FROM $wpdb->posts WHERE $wpdb->posts.ID IN ('$postids')" );
 
-		$max_comment_time = '';
 		if( $wp_query->is_comment_feed() ) {
 			$max_comment_time = $wpdb->get_var( "SELECT MAX($wpdb->comments.comment_date_gmt) FROM $wpdb->comments WHERE $wpdb->comments.comment_post_ID IN ('$postids')" );
+			return max( $max_post_time, $max_comment_time );
 		}
-		return max( $max_post_time, $max_comment_time );
+		return $max_post_time;
 	}
 
 	// Fallback to last time any post was modified or published.
